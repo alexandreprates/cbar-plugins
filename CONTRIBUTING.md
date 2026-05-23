@@ -44,3 +44,10 @@ If `shellcheck` is available, run it as well:
 ```bash
 shellcheck plugins/category/name.interval.sh
 ```
+
+Rebuild and validate the registry before submitting plugin changes:
+
+```bash
+./scripts/build-registry.sh
+python3 -m json.tool registry/plugins.json >/dev/null
+```

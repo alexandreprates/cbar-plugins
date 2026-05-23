@@ -4,6 +4,8 @@ A curated collection of local scripts for [cbar](https://github.com/alexandrepra
 
 These plugins are intentionally small and inspectable. Each plugin writes plain text to stdout, using the cbar plugin output format to define panel text, popup entries, links, shell actions, refresh behavior, and terminal actions.
 
+The repository also publishes a machine-readable catalog at [registry/plugins.json](registry/plugins.json). cbar can use this registry to browse, verify, and install plugins directly from the applet settings.
+
 ## Plugin Categories
 
 ```text
@@ -41,6 +43,16 @@ Restart cbar or trigger a refresh after adding new files. Current cbar releases 
 ## Plugin Format
 
 See [docs/plugin-format.md](docs/plugin-format.md) for the supported output format and [docs/style-guide.md](docs/style-guide.md) for contribution conventions.
+
+## Rebuilding The Registry
+
+After changing plugin files or metadata, rebuild the catalog:
+
+```bash
+./scripts/build-registry.sh
+```
+
+The registry includes plugin metadata, download URLs, file sizes, and SHA-256 checksums used by cbar before installing a plugin.
 
 ## Inspiration
 
