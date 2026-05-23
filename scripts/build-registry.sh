@@ -18,6 +18,7 @@ plugins=(
   "network.ping|Ping|network|Checks connectivity to a configurable host.|plugins/network/ping.10s.sh|10s|bash|ping|CBAR_PING_HOST|GPL-3.0-only"
   "dev.docker-containers|Docker Containers|dev|Summarizes Docker container state.|plugins/dev/docker-containers.10s.sh|10s|bash|docker||GPL-3.0-only"
   "dev.github-notifications|GitHub Notifications|dev|Shows GitHub notification count when gh is authenticated.|plugins/dev/github-notifications.1m.sh|1m|bash|gh||GPL-3.0-only"
+  "dev.openai-codex|OpenAI Codex Usage|dev|Displays OpenAI Codex usage limits from local Codex session metadata.|plugins/dev/openai_codex.5m.sh|5m|bash|python3,sed,tr|VAR_SHOW_7D,VAR_COLORS,VAR_SHOW_RESET,VAR_SHOW_BARS|GPL-3.0-only"
   "productivity.timer|Timer|productivity|Shows a simple countdown timer backed by /tmp.|plugins/productivity/timer.1s.sh|1s|bash|date,rm|CBAR_TIMER_SECONDS|GPL-3.0-only"
   "productivity.calendar|Calendar|productivity|Shows today's date and calendar shortcuts.|plugins/productivity/calendar.5m.sh|5m|bash|date,cal|CBAR_CALENDAR_URL|GPL-3.0-only"
 )

@@ -116,6 +116,22 @@
       "license": "GPL-3.0-only"
     },
     {
+      "id": "dev.openai-codex",
+      "name": "OpenAI Codex Usage",
+      "category": "dev",
+      "description": "Displays OpenAI Codex usage limits from local Codex session metadata.",
+      "path": "plugins/dev/openai_codex.5m.sh",
+      "download_url": "https://raw.githubusercontent.com/alexandreprates/cbar-plugins/main/plugins/dev/openai_codex.5m.sh",
+      "install_name": "openai_codex.5m.sh",
+      "interval": "5m",
+      "language": "bash",
+      "dependencies": ["python3", "sed", "tr"],
+      "env": ["VAR_SHOW_7D", "VAR_COLORS", "VAR_SHOW_RESET", "VAR_SHOW_BARS"],
+      "sha256": "1a7db530a5cfb1ef7503c931be1b4a2c38642e84613438d7a57b15adf974c384",
+      "size_bytes": 13772,
+      "license": "GPL-3.0-only"
+    },
+    {
       "id": "productivity.timer",
       "name": "Timer",
       "category": "productivity",
