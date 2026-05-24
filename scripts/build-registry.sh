@@ -10,24 +10,45 @@ raw_base_url="${CBAR_PLUGINS_RAW_BASE_URL:-https://raw.githubusercontent.com/ale
 
 mkdir -p "${registry_dir}"
 
-plugins=(
-  "system.cpu|CPU|system|Shows load average and CPU core count.|plugins/system/cpu.5s.sh|5s|bash|awk,getconf,uptime||GPL-3.0-only|AlexandrePrates|https://github.com/AlexandrePrates"
-  "system.memory|Memory|system|Shows current memory usage.|plugins/system/memory.5s.sh|5s|bash|awk,free||GPL-3.0-only|AlexandrePrates|https://github.com/AlexandrePrates"
-  "system.disk|Disk|system|Shows root filesystem usage.|plugins/system/disk.30s.sh|30s|bash|df,awk|CBAR_DISK_PATH|GPL-3.0-only|AlexandrePrates|https://github.com/AlexandrePrates"
-  "network.public-ip|Public IP|network|Shows the current public IP address.|plugins/network/public-ip.5m.sh|5m|bash|curl|CBAR_PUBLIC_IP_URL|GPL-3.0-only|AlexandrePrates|https://github.com/AlexandrePrates"
-  "network.ping|Ping|network|Checks connectivity to a configurable host.|plugins/network/ping.10s.sh|10s|bash|ping|CBAR_PING_HOST|GPL-3.0-only|AlexandrePrates|https://github.com/AlexandrePrates"
-  "dev.docker-containers|Docker Containers|dev|Summarizes Docker container state.|plugins/dev/docker-containers.10s.sh|10s|bash|docker||GPL-3.0-only|AlexandrePrates|https://github.com/AlexandrePrates"
-  "dev.github-notifications|GitHub Notifications|dev|Shows GitHub notification count when gh is authenticated.|plugins/dev/github-notifications.1m.sh|1m|bash|gh||GPL-3.0-only|AlexandrePrates|https://github.com/AlexandrePrates"
-  "dev.openai-codex|OpenAI Codex Usage|dev|Displays OpenAI Codex usage limits from local Codex session metadata.|plugins/dev/openai_codex.5m.sh|5m|bash|python3,sed,tr|VAR_SHOW_7D,VAR_COLORS,VAR_SHOW_RESET,VAR_SHOW_BARS|GPL-3.0-only|AlexandrePrates|https://github.com/AlexandrePrates"
-  "showcase.overview|Showcase Overview|showcase|Demonstrates panel titles, cycle items, popup rows, nesting, alternates, hidden rows, disabled rows, and refresh.|plugins/showcase/showcase-overview.10s.sh|10s|bash|date||GPL-3.0-only|AlexandrePrates|https://github.com/AlexandrePrates"
-  "showcase.actions|Showcase Actions|showcase|Demonstrates links, shell actions, terminal actions, and refresh-after-action.|plugins/showcase/showcase-actions.30s.sh|30s|bash|date,printf,sh||GPL-3.0-only|AlexandrePrates|https://github.com/AlexandrePrates"
-  "showcase.config|Showcase Config|showcase|Demonstrates environment-variable driven plugin behavior.|plugins/showcase/showcase-config.1m.sh|1m|bash|date|CBAR_SHOWCASE_NAME,CBAR_SHOWCASE_URL,CBAR_SHOWCASE_MODE|GPL-3.0-only|AlexandrePrates|https://github.com/AlexandrePrates"
-  "showcase.memory-bar|Showcase Memory Gauge|showcase|Demonstrates inline SVG images with a compact RAM usage gauge.|plugins/showcase/showcase-memory-bar.5s.sh|5s|bash|awk,base64,tr|CBAR_SHOWCASE_RAM_WARN,CBAR_SHOWCASE_RAM_CRIT|GPL-3.0-only|AlexandrePrates|https://github.com/AlexandrePrates"
-  "showcase.cpu-chart|Showcase CPU Chart|showcase|Demonstrates inline SVG images with a tiny CPU usage history chart.|plugins/showcase/showcase-cpu-chart.5s.sh|5s|bash|awk,base64,mkdir,tr|CBAR_SHOWCASE_CPU_WARN|GPL-3.0-only|AlexandrePrates|https://github.com/AlexandrePrates"
-  "showcase.status|Showcase Status|showcase|Demonstrates dynamic local status, thresholds, separators, and diagnostics.|plugins/showcase/showcase-status.5s.sh|5s|bash|awk,date,df,uptime|CBAR_SHOWCASE_DISK_WARN|GPL-3.0-only|AlexandrePrates|https://github.com/AlexandrePrates"
-  "productivity.timer|Timer|productivity|Shows a simple countdown timer backed by /tmp.|plugins/productivity/timer.1s.sh|1s|bash|date,rm|CBAR_TIMER_SECONDS|GPL-3.0-only|AlexandrePrates|https://github.com/AlexandrePrates"
-  "productivity.calendar|Calendar|productivity|Shows today's date and calendar shortcuts.|plugins/productivity/calendar.5m.sh|5m|bash|date,cal|CBAR_CALENDAR_URL|GPL-3.0-only|AlexandrePrates|https://github.com/AlexandrePrates"
-)
+plugins=()
+
+# Add new catalog entries below, grouped by category. Field order:
+# id, name, category, description, path, interval, language, dependencies,
+# env, license, publisher, publisher_url.
+add_plugin() {
+  if [[ "$#" -ne 12 ]]; then
+    printf 'add_plugin expected 12 fields, got %s\n' "$#" >&2
+    exit 1
+  fi
+
+  plugins+=("$1|$2|$3|$4|$5|$6|$7|$8|$9|${10}|${11}|${12}")
+}
+
+# system
+add_plugin "system.cpu" "CPU" "system" "Shows load average and CPU core count." "plugins/system/cpu.5s.sh" "5s" "bash" "awk,getconf,uptime" "" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
+add_plugin "system.memory" "Memory" "system" "Shows current memory usage." "plugins/system/memory.5s.sh" "5s" "bash" "awk,free" "" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
+add_plugin "system.disk" "Disk" "system" "Shows root filesystem usage." "plugins/system/disk.30s.sh" "30s" "bash" "df,awk" "CBAR_DISK_PATH" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
+
+# network
+add_plugin "network.public-ip" "Public IP" "network" "Shows the current public IP address." "plugins/network/public-ip.5m.sh" "5m" "bash" "curl" "CBAR_PUBLIC_IP_URL" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
+add_plugin "network.ping" "Ping" "network" "Checks connectivity to a configurable host." "plugins/network/ping.10s.sh" "10s" "bash" "ping" "CBAR_PING_HOST" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
+
+# dev
+add_plugin "dev.docker-containers" "Docker Containers" "dev" "Summarizes Docker container state." "plugins/dev/docker-containers.10s.sh" "10s" "bash" "docker" "" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
+add_plugin "dev.github-notifications" "GitHub Notifications" "dev" "Shows GitHub notification count when gh is authenticated." "plugins/dev/github-notifications.1m.sh" "1m" "bash" "gh" "" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
+add_plugin "dev.openai-codex" "OpenAI Codex Usage" "dev" "Displays OpenAI Codex usage limits from local Codex session metadata." "plugins/dev/openai_codex.5m.sh" "5m" "bash" "python3,sed,tr" "VAR_SHOW_7D,VAR_COLORS,VAR_SHOW_RESET,VAR_SHOW_BARS" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
+
+# showcase
+add_plugin "showcase.overview" "Showcase Overview" "showcase" "Demonstrates panel titles, cycle items, popup rows, nesting, alternates, hidden rows, disabled rows, and refresh." "plugins/showcase/showcase-overview.10s.sh" "10s" "bash" "date" "" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
+add_plugin "showcase.actions" "Showcase Actions" "showcase" "Demonstrates links, shell actions, terminal actions, and refresh-after-action." "plugins/showcase/showcase-actions.30s.sh" "30s" "bash" "date,printf,sh" "" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
+add_plugin "showcase.config" "Showcase Config" "showcase" "Demonstrates environment-variable driven plugin behavior." "plugins/showcase/showcase-config.1m.sh" "1m" "bash" "date" "CBAR_SHOWCASE_NAME,CBAR_SHOWCASE_URL,CBAR_SHOWCASE_MODE" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
+add_plugin "showcase.memory-bar" "Showcase Memory Gauge" "showcase" "Demonstrates inline SVG images with a compact RAM usage gauge." "plugins/showcase/showcase-memory-bar.5s.sh" "5s" "bash" "awk,base64,tr" "CBAR_SHOWCASE_RAM_WARN,CBAR_SHOWCASE_RAM_CRIT" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
+add_plugin "showcase.cpu-chart" "Showcase CPU Chart" "showcase" "Demonstrates inline SVG images with a tiny CPU usage history chart." "plugins/showcase/showcase-cpu-chart.5s.sh" "5s" "bash" "awk,base64,mkdir,tr" "CBAR_SHOWCASE_CPU_WARN" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
+add_plugin "showcase.status" "Showcase Status" "showcase" "Demonstrates dynamic local status, thresholds, separators, and diagnostics." "plugins/showcase/showcase-status.5s.sh" "5s" "bash" "awk,date,df,uptime" "CBAR_SHOWCASE_DISK_WARN" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
+
+# productivity
+add_plugin "productivity.timer" "Timer" "productivity" "Shows a simple countdown timer backed by /tmp." "plugins/productivity/timer.1s.sh" "1s" "bash" "date,rm" "CBAR_TIMER_SECONDS" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
+add_plugin "productivity.calendar" "Calendar" "productivity" "Shows today's date and calendar shortcuts." "plugins/productivity/calendar.5m.sh" "5m" "bash" "date,cal" "CBAR_CALENDAR_URL" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
 
 json_array() {
   local csv="${1}"

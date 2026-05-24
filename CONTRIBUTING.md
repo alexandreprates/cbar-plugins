@@ -62,7 +62,7 @@ Copy a template into the closest `plugins/<category>/` directory and rename it f
 
 The catalog in `registry/plugins.json` is generated. Do not edit it by hand.
 
-When adding or changing a plugin, update the matching metadata entry in `scripts/build-registry.sh`, then rebuild:
+When adding or changing a plugin, update the matching `add_plugin` entry in `scripts/build-registry.sh`, then rebuild:
 
 ```bash
 ./scripts/build-registry.sh
@@ -70,12 +70,22 @@ When adding or changing a plugin, update the matching metadata entry in `scripts
 
 Metadata should include any non-standard dependencies and environment variables so cbar can show users what a plugin expects before installation.
 
+Add new entries under the matching category comment in `scripts/build-registry.sh`, such as `# system`, `# network`, `# dev`, `# showcase`, or `# productivity`. Keep the field order used by `add_plugin`:
+
+```text
+id, name, category, description, path, interval, language, dependencies, env, license, publisher, publisher_url
+```
+
+Use comma-separated values for `dependencies` and `env`, or an empty string when none are needed. Keep generated fields such as `sha256`, `size_bytes`, `download_url`, and `install_name` out of manual metadata; the builder computes them.
+
 Each catalog plugin must also include:
 
 - `publisher`: the GitHub username responsible for publishing the plugin through the fork and pull request flow.
 - `publisher_url`: the contributor's GitHub profile URL when available.
 
 Use `publisher`, not `author` or `maintainer`. Later maintenance edits do not automatically change the original publisher unless the change is intentional.
+
+Per-plugin sidecar metadata files may become useful if the catalog grows enough for merge conflicts to hurt, but the current source of truth is still `scripts/build-registry.sh`.
 
 ## Validation
 
