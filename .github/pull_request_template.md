@@ -7,6 +7,8 @@
 - Plugin path/category:
 - New dependencies:
 - New environment variables:
+- Publisher:
+- Publisher URL:
 - Registry rebuilt: yes/no
 - Screenshot or output sample: optional
 
@@ -16,6 +18,7 @@
 - [ ] No secrets, tokens, private hosts, or personal paths are hardcoded.
 - [ ] Remote calls are necessary for the plugin's purpose and fail predictably.
 - [ ] Optional dependencies are checked or documented.
+- [ ] Publisher metadata identifies the GitHub user responsible for this plugin.
 - [ ] Missing dependencies produce useful output or a clear failure.
 - [ ] The script avoids hanging indefinitely.
 

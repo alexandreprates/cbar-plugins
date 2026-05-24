@@ -10,7 +10,7 @@ Plugins run locally as the current user. Reviewers will prioritize clarity, safe
 2. Copy a template, copy a similar existing plugin, or start a new executable script with a filename interval such as `battery.30s.sh`, `calendar.5m.sh`, or `backup.1h.sh`.
 3. Keep the output compatible with cbar. See [docs/plugin-format.md](docs/plugin-format.md) for panel titles, popup rows, actions, separators, and parameters.
 4. Add or update the plugin header with the purpose, dependencies, and environment variables.
-5. Document non-standard dependencies and supported environment variables in `scripts/build-registry.sh` metadata.
+5. Document non-standard dependencies, supported environment variables, and publisher metadata in `scripts/build-registry.sh`.
 6. Run the validation commands below.
 7. Rebuild `registry/plugins.json`.
 8. Open a pull request from your fork.
@@ -70,6 +70,13 @@ When adding or changing a plugin, update the matching metadata entry in `scripts
 
 Metadata should include any non-standard dependencies and environment variables so cbar can show users what a plugin expects before installation.
 
+Each catalog plugin must also include:
+
+- `publisher`: the GitHub username responsible for publishing the plugin through the fork and pull request flow.
+- `publisher_url`: the contributor's GitHub profile URL when available.
+
+Use `publisher`, not `author` or `maintainer`. Later maintenance edits do not automatically change the original publisher unless the change is intentional.
+
 ## Validation
 
 Before submitting, run the plugin directly and check Bash syntax:
@@ -111,6 +118,7 @@ git diff -- registry/plugins.json
 - The script output follows the cbar plugin format.
 - Dependencies and environment variables are documented in the header.
 - Dependencies and environment variables are reflected in registry metadata.
+- Publisher metadata is present and points to the contributor's GitHub identity.
 - No secrets, tokens, private hosts, or personal paths are hardcoded.
 - Remote calls are necessary for the plugin's purpose and fail predictably.
 - Missing dependencies produce useful output or a clear failure.
