@@ -7,7 +7,7 @@ Plugins run locally as the current user. Reviewers will prioritize clarity, safe
 ## Contribution Flow
 
 1. Choose the closest category under `plugins/`: `system`, `network`, `dev`, `showcase`, or `productivity`.
-2. Copy a template when available, copy a similar existing plugin, or start a new executable script with a filename interval such as `battery.30s.sh`, `calendar.5m.sh`, or `backup.1h.sh`.
+2. Copy a template, copy a similar existing plugin, or start a new executable script with a filename interval such as `battery.30s.sh`, `calendar.5m.sh`, or `backup.1h.sh`.
 3. Keep the output compatible with cbar. See [docs/plugin-format.md](docs/plugin-format.md) for panel titles, popup rows, actions, separators, and parameters.
 4. Add or update the plugin header with the purpose, dependencies, and environment variables.
 5. Document non-standard dependencies and supported environment variables in `scripts/build-registry.sh` metadata.
@@ -40,6 +40,14 @@ Each plugin should start with a short metadata block:
 ```
 
 Use `env: VARIABLE_NAME` when a plugin supports optional or required environment variables.
+
+## Templates
+
+- `templates/basic.1m.sh` is a minimal panel status plus popup.
+- `templates/menu.5m.sh` demonstrates sections, disabled rows, alternate rows, links, shell actions, terminal actions, and refresh-after-action.
+- `templates/image.5s.sh` demonstrates inline SVG output for gauges or visual indicators.
+
+Copy a template into the closest `plugins/<category>/` directory and rename it for the intended refresh interval before editing.
 
 ## Safety
 
@@ -81,7 +89,7 @@ python3 -m json.tool registry/plugins.json >/dev/null
 For broader changes, validate every plugin:
 
 ```bash
-find plugins -name '*.sh' -print0 | xargs -0 -n1 bash -n
+find plugins templates -name '*.sh' -print0 | xargs -0 -n1 bash -n
 ```
 
 If `shellcheck` is available, run it as an additional review aid:

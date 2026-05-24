@@ -17,6 +17,7 @@ plugins/
   dev/           developer workflow helpers
   showcase/      examples that demonstrate cbar capabilities
   productivity/  lightweight desktop utilities
+templates/       starter scripts for new plugin contributions
 ```
 
 ## Included Plugins
@@ -40,12 +41,18 @@ plugins/
 
 The `showcase/` plugins are capability examples for plugin authors. They demonstrate supported cbar output features; they are not the only expected plugin style.
 
+## Plugin Templates
+
+- `templates/basic.1m.sh` starts with a short panel status and a simple popup.
+- `templates/menu.5m.sh` demonstrates sections, disabled rows, alternate rows, links, shell actions, terminal actions, and refresh-after-action.
+- `templates/image.5s.sh` demonstrates a compact inline SVG image suitable for gauges or visual indicators.
+
 ## Contribute A Plugin
 
 The shortest path for a new plugin contribution is:
 
 ```bash
-cp plugins/system/memory.5s.sh plugins/system/my-plugin.1m.sh
+cp templates/basic.1m.sh plugins/system/my-plugin.1m.sh
 chmod +x plugins/system/my-plugin.1m.sh
 $EDITOR plugins/system/my-plugin.1m.sh
 bash -n plugins/system/my-plugin.1m.sh
