@@ -1,8 +1,10 @@
 # cbar plugins
 
-A curated collection of local scripts for [cbar](https://github.com/alexandreprates/cbar), the COSMIC panel applet for scriptable desktop workflows.
+The official community plugin catalog for [cbar](https://github.com/alexandreprates/cbar), the COSMIC panel applet for scriptable desktop workflows.
 
-These plugins are intentionally small and inspectable. Each plugin writes plain text to stdout, using the cbar plugin output format to define panel text, popup entries, links, shell actions, refresh behavior, and terminal actions.
+This repository keeps plugin development separate from the cbar applet itself. The `cbar` repository owns the applet, parser, runtime, and COSMIC integration; `cbar-plugins` owns curated scripts, contribution guidance, and the generated catalog metadata used for browsing and installation.
+
+Community contributions are welcome. Plugins are intentionally small and inspectable: each plugin writes plain text to stdout, using the cbar plugin output format to define panel text, popup entries, links, shell actions, refresh behavior, and terminal actions.
 
 The repository also publishes a machine-readable catalog at [registry/plugins.json](registry/plugins.json). cbar can use this registry to browse, verify, and install plugins directly from the applet settings.
 
@@ -35,6 +37,37 @@ plugins/
 - `plugins/showcase/showcase-status.5s.sh` demonstrates dynamic local status, thresholds, separators, and diagnostics.
 - `plugins/productivity/timer.1s.sh` shows a simple countdown backed by `/tmp`.
 - `plugins/productivity/calendar.5m.sh` shows today's date and a quick calendar action.
+
+The `showcase/` plugins are capability examples for plugin authors. They demonstrate supported cbar output features; they are not the only expected plugin style.
+
+## Contribute A Plugin
+
+The shortest path for a new plugin contribution is:
+
+```bash
+cp plugins/system/memory.5s.sh plugins/system/my-plugin.1m.sh
+chmod +x plugins/system/my-plugin.1m.sh
+$EDITOR plugins/system/my-plugin.1m.sh
+bash -n plugins/system/my-plugin.1m.sh
+./plugins/system/my-plugin.1m.sh
+./scripts/build-registry.sh
+python3 -m json.tool registry/plugins.json >/dev/null
+```
+
+Then open a pull request from your fork. See [CONTRIBUTING.md](CONTRIBUTING.md), [docs/plugin-format.md](docs/plugin-format.md), and [docs/style-guide.md](docs/style-guide.md) before submitting.
+
+## Good First Plugin Ideas
+
+- Battery status and time remaining.
+- VPN connection status.
+- Uptime and session duration.
+- Docker Compose project status.
+- GitHub pull request or issue shortcuts.
+- Clipboard history helper.
+- Audio input/output device switcher.
+- Weather summary from a configurable provider.
+- Pomodoro or focus timer.
+- Package update counter.
 
 ## Installing A Plugin
 
