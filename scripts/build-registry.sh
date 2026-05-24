@@ -19,6 +19,12 @@ plugins=(
   "dev.docker-containers|Docker Containers|dev|Summarizes Docker container state.|plugins/dev/docker-containers.10s.sh|10s|bash|docker||GPL-3.0-only"
   "dev.github-notifications|GitHub Notifications|dev|Shows GitHub notification count when gh is authenticated.|plugins/dev/github-notifications.1m.sh|1m|bash|gh||GPL-3.0-only"
   "dev.openai-codex|OpenAI Codex Usage|dev|Displays OpenAI Codex usage limits from local Codex session metadata.|plugins/dev/openai_codex.5m.sh|5m|bash|python3,sed,tr|VAR_SHOW_7D,VAR_COLORS,VAR_SHOW_RESET,VAR_SHOW_BARS|GPL-3.0-only"
+  "showcase.overview|Showcase Overview|showcase|Demonstrates panel titles, cycle items, popup rows, nesting, alternates, hidden rows, disabled rows, and refresh.|plugins/showcase/showcase-overview.10s.sh|10s|bash|date||GPL-3.0-only"
+  "showcase.actions|Showcase Actions|showcase|Demonstrates links, shell actions, terminal actions, and refresh-after-action.|plugins/showcase/showcase-actions.30s.sh|30s|bash|date,printf,sh||GPL-3.0-only"
+  "showcase.config|Showcase Config|showcase|Demonstrates environment-variable driven plugin behavior.|plugins/showcase/showcase-config.1m.sh|1m|bash|date|CBAR_SHOWCASE_NAME,CBAR_SHOWCASE_URL,CBAR_SHOWCASE_MODE|GPL-3.0-only"
+  "showcase.memory-bar|Showcase Memory Gauge|showcase|Demonstrates inline SVG images with a compact RAM usage gauge.|plugins/showcase/showcase-memory-bar.5s.sh|5s|bash|awk,base64,tr|CBAR_SHOWCASE_RAM_WARN,CBAR_SHOWCASE_RAM_CRIT|GPL-3.0-only"
+  "showcase.cpu-chart|Showcase CPU Chart|showcase|Demonstrates inline SVG images with a tiny CPU usage history chart.|plugins/showcase/showcase-cpu-chart.5s.sh|5s|bash|awk,base64,mkdir,tr|CBAR_SHOWCASE_CPU_WARN|GPL-3.0-only"
+  "showcase.status|Showcase Status|showcase|Demonstrates dynamic local status, thresholds, separators, and diagnostics.|plugins/showcase/showcase-status.5s.sh|5s|bash|awk,date,df,uptime|CBAR_SHOWCASE_DISK_WARN|GPL-3.0-only"
   "productivity.timer|Timer|productivity|Shows a simple countdown timer backed by /tmp.|plugins/productivity/timer.1s.sh|1s|bash|date,rm|CBAR_TIMER_SECONDS|GPL-3.0-only"
   "productivity.calendar|Calendar|productivity|Shows today's date and calendar shortcuts.|plugins/productivity/calendar.5m.sh|5m|bash|date,cal|CBAR_CALENDAR_URL|GPL-3.0-only"
 )
