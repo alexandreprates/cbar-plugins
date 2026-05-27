@@ -40,7 +40,6 @@ add_plugin "dev.openai-codex" "OpenAI Codex Usage" "dev" "Displays OpenAI Codex 
 
 # productivity
 add_plugin "productivity.timer" "Timer" "productivity" "Shows a compact animated hourglass countdown timer." "plugins/productivity/timer.1s.sh" "1s" "bash" "en" "base64,date,mkdir,rm,tr" "CBAR_TIMER_SECONDS" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
-add_plugin "productivity.calendar" "Calendar" "productivity" "Shows today's date and calendar shortcuts." "plugins/productivity/calendar.5m.sh" "5m" "bash" "en" "date,cal" "CBAR_CALENDAR_URL" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
 
 REPO_ROOT="${repo_root}" RAW_BASE_URL="${raw_base_url}" REGISTRY_FILE="${registry_file}" python3 - "${plugins[@]}" <<'PY'
 import hashlib

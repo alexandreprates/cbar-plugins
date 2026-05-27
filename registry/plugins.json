@@ -259,32 +259,6 @@
       "license": "GPL-3.0-only",
       "publisher": "AlexandrePrates",
       "publisher_url": "https://github.com/AlexandrePrates"
-    },
-    {
-      "id": "productivity.calendar",
-      "name": "Calendar",
-      "category": "productivity",
-      "description": "Shows today's date and calendar shortcuts.",
-      "path": "plugins/productivity/calendar.5m.sh",
-      "download_url": "https://raw.githubusercontent.com/alexandreprates/cbar-plugins/main/plugins/productivity/calendar.5m.sh",
-      "install_name": "calendar.5m.sh",
-      "interval": "5m",
-      "language": "bash",
-      "languages": [
-        "en"
-      ],
-      "dependencies": [
-        "date",
-        "cal"
-      ],
-      "env": [
-        "CBAR_CALENDAR_URL"
-      ],
-      "sha256": "6f4ac334eb58f67008b52f3b0fc62ac8d7a1e3921595998346e77c19526bb8a5",
-      "size_bytes": 641,
-      "license": "GPL-3.0-only",
-      "publisher": "AlexandrePrates",
-      "publisher_url": "https://github.com/AlexandrePrates"
     }
   ]
 }
