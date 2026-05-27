@@ -90,6 +90,35 @@
       "publisher_url": "https://github.com/AlexandrePrates"
     },
     {
+      "id": "system.service-status",
+      "name": "Service Status",
+      "category": "system",
+      "description": "Shows systemd service health with compact status and actions.",
+      "path": "plugins/system/service-status.30s.sh",
+      "download_url": "https://raw.githubusercontent.com/alexandreprates/cbar-plugins/main/plugins/system/service-status.30s.sh",
+      "install_name": "service-status.30s.sh",
+      "interval": "30s",
+      "language": "bash",
+      "languages": [
+        "en"
+      ],
+      "dependencies": [
+        "awk",
+        "base64",
+        "journalctl",
+        "systemctl",
+        "tr"
+      ],
+      "env": [
+        "CBAR_SERVICE_UNITS"
+      ],
+      "sha256": "c430d8c3ee31b59e8298d526fa07df992d50a6b6c12afcd03a164863ecc11d4c",
+      "size_bytes": 6529,
+      "license": "GPL-3.0-only",
+      "publisher": "AlexandrePrates",
+      "publisher_url": "https://github.com/AlexandrePrates"
+    },
+    {
       "id": "network.public-ip",
       "name": "Public IP",
       "category": "network",

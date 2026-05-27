@@ -28,6 +28,7 @@ add_plugin() {
 add_plugin "system.cpu-chart" "CPU Chart" "system" "Shows CPU usage history as a compact panel chart." "plugins/system/cpu-chart.5s.sh" "5s" "bash" "en" "awk,base64,mkdir,tr" "CBAR_CPU_WARN" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
 add_plugin "system.memory-gauge" "Memory Gauge" "system" "Shows RAM usage as a compact panel gauge." "plugins/system/memory-gauge.5s.sh" "5s" "bash" "en" "awk,base64,tr" "CBAR_MEMORY_WARN,CBAR_MEMORY_CRIT" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
 add_plugin "system.disk" "Disk" "system" "Shows filesystem usage as compact segmented blocks." "plugins/system/disk.30s.sh" "30s" "bash" "en" "awk,base64,df,tr" "CBAR_DISK_PATH,CBAR_DISK_WARN,CBAR_DISK_CRIT" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
+add_plugin "system.service-status" "Service Status" "system" "Shows systemd service health with compact status and actions." "plugins/system/service-status.30s.sh" "30s" "bash" "en" "awk,base64,journalctl,systemctl,tr" "CBAR_SERVICE_UNITS" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
 
 # network
 add_plugin "network.public-ip" "Public IP" "network" "Shows public and local IP status with copy actions." "plugins/network/public-ip.5m.sh" "5m" "bash" "en" "awk,base64,curl,ip,tr,wl-copy,xclip" "CBAR_PUBLIC_IP_URL" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"

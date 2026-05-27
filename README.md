@@ -24,6 +24,7 @@ templates/       starter scripts for new plugin contributions
 - `plugins/system/cpu-chart.5s.sh` shows compact CPU usage history.
 - `plugins/system/memory-gauge.5s.sh` shows compact memory usage.
 - `plugins/system/disk.30s.sh` shows compact filesystem usage.
+- `plugins/system/service-status.30s.sh` shows compact systemd service health.
 - `plugins/network/public-ip.5m.sh` shows public and local IP status with copy actions.
 - `plugins/network/network-throughput.2s.sh` shows compact upload and download throughput.
 - `plugins/network/vpn-status.10s.sh` shows VPN connection status with copy actions.
@@ -64,7 +65,6 @@ Then open a pull request from your fork. See [CONTRIBUTING.md](CONTRIBUTING.md),
 - Package update counter.
 - Kubernetes context indicator.
 - Git dirty watcher.
-- Systemd service status monitor.
 - SSH tunnel or remote host status.
 
 ## Installing A Plugin
