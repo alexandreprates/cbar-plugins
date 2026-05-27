@@ -244,6 +244,39 @@
       "publisher_url": "https://github.com/AlexandrePrates"
     },
     {
+      "id": "network.ssh-hosts",
+      "name": "SSH Hosts",
+      "category": "network",
+      "description": "Shows configured SSH host reachability with compact status.",
+      "path": "plugins/network/ssh-hosts.30s.sh",
+      "download_url": "https://raw.githubusercontent.com/alexandreprates/cbar-plugins/main/plugins/network/ssh-hosts.30s.sh",
+      "install_name": "ssh-hosts.30s.sh",
+      "interval": "30s",
+      "language": "bash",
+      "languages": [
+        "en"
+      ],
+      "dependencies": [
+        "awk",
+        "base64",
+        "date",
+        "ssh",
+        "tr",
+        "wl-copy",
+        "xclip"
+      ],
+      "env": [
+        "CBAR_SSH_HOSTS",
+        "CBAR_SSH_WARN_MS",
+        "CBAR_SSH_TIMEOUT"
+      ],
+      "sha256": "e88c8ca6abd7574720c3999dccf60e823564aedbf26261694b014dcf4c0a55a7",
+      "size_bytes": 4581,
+      "license": "GPL-3.0-only",
+      "publisher": "AlexandrePrates",
+      "publisher_url": "https://github.com/AlexandrePrates"
+    },
+    {
       "id": "network.ping",
       "name": "Ping",
       "category": "network",

@@ -29,6 +29,7 @@ templates/       starter scripts for new plugin contributions
 - `plugins/network/public-ip.5m.sh` shows public and local IP status with copy actions.
 - `plugins/network/network-throughput.2s.sh` shows compact upload and download throughput.
 - `plugins/network/vpn-status.10s.sh` shows VPN connection status with copy actions.
+- `plugins/network/ssh-hosts.30s.sh` shows configured SSH host reachability.
 - `plugins/network/ping.10s.sh` shows compact latency to a configurable host.
 - `plugins/dev/docker-health.10s.sh` shows Docker daemon and container health.
 - `plugins/dev/github-notifications.1m.sh` shows GitHub notification status with an unread badge.
@@ -65,7 +66,6 @@ Then open a pull request from your fork. See [CONTRIBUTING.md](CONTRIBUTING.md),
 - GitHub pull request or issue shortcuts.
 - Clipboard history helper.
 - Git dirty watcher.
-- SSH tunnel or remote host status.
 
 ## Installing A Plugin
 
