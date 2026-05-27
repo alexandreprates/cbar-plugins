@@ -220,13 +220,13 @@
         "tr"
       ],
       "env": [
-        "VAR_SHOW_7D",
-        "VAR_COLORS",
-        "VAR_SHOW_RESET",
-        "VAR_SHOW_BARS"
+        "CBAR_CODEX_SHOW_7D",
+        "CBAR_CODEX_COLORS",
+        "CBAR_CODEX_SHOW_RESET",
+        "CBAR_CODEX_SHOW_BARS"
       ],
-      "sha256": "1a7db530a5cfb1ef7503c931be1b4a2c38642e84613438d7a57b15adf974c384",
-      "size_bytes": 13772,
+      "sha256": "f68ae39f0aa183c6053497fcaae7c5a33fb282581b78ace4854e3da6af515440",
+      "size_bytes": 12798,
       "license": "GPL-3.0-only",
       "publisher": "AlexandrePrates",
       "publisher_url": "https://github.com/AlexandrePrates"

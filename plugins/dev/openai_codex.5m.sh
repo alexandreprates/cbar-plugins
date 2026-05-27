@@ -1,19 +1,12 @@
 #!/usr/bin/env bash
 # cbar: Displays OpenAI Codex usage limits from local Codex session metadata.
 # deps: python3, sed, tr
-# env: VAR_SHOW_7D, VAR_COLORS, VAR_SHOW_RESET, VAR_SHOW_BARS
+# env: CBAR_CODEX_SHOW_7D, CBAR_CODEX_COLORS, CBAR_CODEX_SHOW_RESET, CBAR_CODEX_SHOW_BARS
 
-# User variables
-# ================
-#<xbar.var>boolean(VAR_SHOW_7D="true"): Also show the secondary window in the title (e.g. 5h:12% week:4%).</xbar.var>
-#<xbar.var>boolean(VAR_COLORS="true"): Color-code title at warning (>75%) and critical (>90%) levels.</xbar.var>
-#<xbar.var>boolean(VAR_SHOW_RESET="true"): Show time-until-reset for each window in the dropdown.</xbar.var>
-#<xbar.var>boolean(VAR_SHOW_BARS="true"): Show dynamic dual progress bar icon (primary top, secondary bottom).</xbar.var>
-
-SHOW_7D="${VAR_SHOW_7D:-true}"
-COLORS="${VAR_COLORS:-true}"
-SHOW_RESET="${VAR_SHOW_RESET:-true}"
-SHOW_BARS="${VAR_SHOW_BARS:-true}"
+SHOW_7D="${CBAR_CODEX_SHOW_7D:-${VAR_SHOW_7D:-true}}"
+COLORS="${CBAR_CODEX_COLORS:-${VAR_COLORS:-true}}"
+SHOW_RESET="${CBAR_CODEX_SHOW_RESET:-${VAR_SHOW_RESET:-true}}"
+SHOW_BARS="${CBAR_CODEX_SHOW_BARS:-${VAR_SHOW_BARS:-true}}"
 
 CODEX_ICON="iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAeGVYSWZNTQAqAAAACAAEARoABQAAAAEAAAA+ARsABQAAAAEAAABGASgAAwAAAAEAAgAAh2kABAAAAAEAAABOAAAAAAAAAJAAAAABAAAAkAAAAAEAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAEqADAAQAAAABAAAAEgAAAABIJAr0AAAACXBIWXMAABYlAAAWJQFJUiTwAAADc0lEQVQ4EW2UW2hcVRSGv73PZWaEkqQ3xGjQTm1orFqh3mNRkajtg9AqqDG+9KKRoogP9kUd8aUPgo2CYhovL9I+aEGoaBWlqUV9iLZIUIvGVqmRCkmqtc7lzDnbf5+ZVCrdcObsM2utf631r39vw/nW9lNdlOIBCDfh0lswRGAOYswYWe0jKh2z/w8z5/xRcSGmvgVjn8AEvbgMsmbLxYbCkrvLfsaxExe9RsW0jTKdBar8uRBTHCWIN5Kl0EggaFv1iW3vQxUXyJA03oXaI/PVtYC2uoiLqruJSxtp1DAOBq8KuPUyS105D/6SMfmHo9Z0TM3I6KMKRSWr72V68n5G1yStPN31R4laINQFcnVA72LDM580+XHWsb0/4L6Vlqf7Q56/PST2UUpIWNjAhSs3+1oNnthi4Qg26iFJWN9rGb42ZPiDhKduDPnttGPf0ZRVSy2fHcsYvi5gSuC7j6jfgtpMG1NQXxNSKqzLQcTJOoEMqZqZqqOnw+DUgg8auTviwPGMgeUhM/84+pbKoA5JPY+FMhl3Wpzboicnc0NfQGW8yWxVNIqbtT2WFYvgpzmHVezIlymn1fqlnYZYxeTLT9bZzX6m/fmI5Riq91NqvUM83nCxZe/3KTv2p9gFKfsfiulbYnhJYA1nGVhh2fedQEI/UtfvaVN9QtH3VycyHlZrL37R5OZLDFeohSULTQ564i/HW+LltmWWw9MZ5a52e3mPRAIyh7DShXZ7JjPuEU/bRPZOZZ5QwKebYgavbAmqoQICxd9Rtnx7skUHXqi4QxaTjUnJebupHL1exg6nDK4O6FtsefLDhPd/SKlKQ15TQ9LXyb8d45pgLlivdmN2GSpznVCcIIjK1BO23RTQvcDw5jcpXSXDenERyvdlVTh0jeX3M/DO1+LBk231kyW/UiuulovWs2eGiS94laaYVsUPKuv13YaSEJYvMrwt0Mv1zmR84UCKistpJdJUmvXHea74Sgto64SOyKo9xFKqV+zZowhlTcpP0AtzXFrySsmPSOyPSPU9pksPMGqSFpCvyh9aiq8TxfeSqvRMw/RLVOSP9/ScB2rHaNPUOUM3RftK+Q9IPvhrhPpjWH+N2GV5+nOuEQ3FpUd1lYzgCrvOf414oPnlq7PFuwSkA+nWippEVXyu/RtUqx+zo3Nu3nX+/S9FI1GiDAig5wAAAABJRU5ErkJggg=="
 
@@ -257,59 +250,41 @@ color_for_pct() {
   echo ""
 }
 
-make_bar() {
-  local pct="${1:-0}"
-  local width=20
-  local filled
-  filled=$(python3 -c "print(min(int(round(${pct} * ${width} / 100)), ${width}))" 2>/dev/null || echo "0")
-  local bar=""
-  local i=1
-  while [ "$i" -le "$width" ]; do
-    if [ "$i" -le "$filled" ]; then
-      bar="${bar}#"
-    else
-      bar="${bar}-"
-    fi
-    i=$((i + 1))
-  done
-  echo "$bar"
-}
-
-make_window_svg() {
-  local pct="${1:-0}"
-  python3 -c "
-import base64
-
-pct = min(max(int(round(${pct})), 0), 100)
-track_width = 27
-fill = max(4, round(track_width * pct / 100)) if pct > 0 else 0
-
-svg = f'''<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 45 16\">
-<rect x=\"9\" y=\"6\" width=\"{track_width}\" height=\"4\" fill=\"#ffffff\" fill-opacity=\"0.30\"/>
-<rect x=\"9\" y=\"6\" width=\"{fill}\" height=\"4\" fill=\"#ffffff\"/>
-</svg>'''
-
-print(base64.b64encode(svg.encode('utf-8')).decode())
-" 2>/dev/null
-}
-
 make_usage_svg() {
   local pct1="${1:-0}" pct2="${2:-0}"
+  local use_colors="${COLORS:-true}"
   python3 -c "
 import base64
+import math
 
 p1 = min(max(int(round(${pct1})), 0), 100)
 p2 = min(max(int(round(${pct2})), 0), 100)
+use_colors = '${use_colors}' == 'true'
 
-track_width = 28
-fill1 = max(5, round(track_width * p1 / 100)) if p1 > 0 else 0
-fill2 = max(5, round(track_width * p2 / 100)) if p2 > 0 else 0
+def fill_for(pct):
+    if use_colors and pct >= 90:
+        return '#f85149'
+    if use_colors and pct >= 70:
+        return '#f59e0b'
+    return '#ffffff'
 
-svg = f'''<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 48 20\">
-<rect x=\"10\" y=\"5\" width=\"{track_width}\" height=\"4\" fill=\"#ffffff\" fill-opacity=\"0.30\"/>
-<rect x=\"10\" y=\"5\" width=\"{fill1}\" height=\"4\" fill=\"#ffffff\"/>
-<rect x=\"10\" y=\"11\" width=\"{track_width}\" height=\"4\" fill=\"#ffffff\" fill-opacity=\"0.30\"/>
-<rect x=\"10\" y=\"11\" width=\"{fill2}\" height=\"4\" fill=\"#ffffff\"/>
+def row(y, pct):
+    filled = 0 if pct <= 0 else max(1, min(10, math.ceil(pct / 10)))
+    blocks = []
+    for index in range(10):
+        active = index < filled
+        color = fill_for(pct) if active else '#ffffff'
+        opacity = '1' if active else '0.26'
+        x = 2 + (index * 3.6)
+        blocks.append(
+            f'<rect x=\"{x}\" y=\"{y}\" width=\"3\" height=\"5\" rx=\"1\" '
+            f'fill=\"{color}\" fill-opacity=\"{opacity}\"/>'
+        )
+    return ''.join(blocks)
+
+svg = f'''<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"40\" height=\"20\" viewBox=\"0 0 40 20\">
+{row(3, p1)}
+{row(12, p2)}
 </svg>'''
 
 print(base64.b64encode(svg.encode('utf-8')).decode())
