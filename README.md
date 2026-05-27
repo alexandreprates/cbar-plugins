@@ -29,7 +29,7 @@ templates/       starter scripts for new plugin contributions
 - `plugins/dev/docker-health.10s.sh` shows Docker daemon and container health.
 - `plugins/dev/github-notifications.1m.sh` shows GitHub notification status with an unread badge.
 - `plugins/dev/openai_codex.5m.sh` displays OpenAI Codex usage limits from local Codex session metadata.
-- `plugins/productivity/timer.1s.sh` shows a simple countdown backed by per-user runtime state.
+- `plugins/productivity/timer.1s.sh` shows a compact animated hourglass countdown timer.
 - `plugins/productivity/calendar.5m.sh` shows today's date and a quick calendar action.
 
 ## Plugin Templates

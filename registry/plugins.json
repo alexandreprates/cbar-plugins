@@ -235,7 +235,7 @@
       "id": "productivity.timer",
       "name": "Timer",
       "category": "productivity",
-      "description": "Shows a simple countdown timer backed by per-user runtime state.",
+      "description": "Shows a compact animated hourglass countdown timer.",
       "path": "plugins/productivity/timer.1s.sh",
       "download_url": "https://raw.githubusercontent.com/alexandreprates/cbar-plugins/main/plugins/productivity/timer.1s.sh",
       "install_name": "timer.1s.sh",
@@ -245,15 +245,17 @@
         "en"
       ],
       "dependencies": [
+        "base64",
         "date",
         "mkdir",
-        "rm"
+        "rm",
+        "tr"
       ],
       "env": [
         "CBAR_TIMER_SECONDS"
       ],
-      "sha256": "f0d93df8706b7fb6c8ffdc63736aaf9dbba2c9a77054ca79673a39c41cda9a27",
-      "size_bytes": 1364,
+      "sha256": "bfc4ea312f2451eadcf9dfc48189e917e3477f76f77feebb923193e6cbc875e1",
+      "size_bytes": 4330,
       "license": "GPL-3.0-only",
       "publisher": "AlexandrePrates",
       "publisher_url": "https://github.com/AlexandrePrates"
