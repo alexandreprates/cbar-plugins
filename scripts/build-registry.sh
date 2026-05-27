@@ -35,7 +35,7 @@ add_plugin "network.ping" "Ping" "network" "Shows compact latency to a configura
 
 # dev
 add_plugin "dev.docker-health" "Docker Health" "dev" "Shows Docker daemon and container health." "plugins/dev/docker-health.10s.sh" "10s" "bash" "en" "awk,base64,docker,sed,tr" "" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
-add_plugin "dev.github-notifications" "GitHub Notifications" "dev" "Shows GitHub notification count when gh is authenticated." "plugins/dev/github-notifications.1m.sh" "1m" "bash" "en" "gh" "" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
+add_plugin "dev.github-notifications" "GitHub Notifications" "dev" "Shows GitHub notification status with an unread badge." "plugins/dev/github-notifications.1m.sh" "1m" "bash" "en" "base64,gh,mkdir,tr" "" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
 add_plugin "dev.openai-codex" "OpenAI Codex Usage" "dev" "Displays OpenAI Codex usage limits from local Codex session metadata." "plugins/dev/openai_codex.5m.sh" "5m" "bash" "en" "python3,sed,tr" "VAR_SHOW_7D,VAR_COLORS,VAR_SHOW_RESET,VAR_SHOW_BARS" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
 
 # productivity

@@ -179,7 +179,7 @@
       "id": "dev.github-notifications",
       "name": "GitHub Notifications",
       "category": "dev",
-      "description": "Shows GitHub notification count when gh is authenticated.",
+      "description": "Shows GitHub notification status with an unread badge.",
       "path": "plugins/dev/github-notifications.1m.sh",
       "download_url": "https://raw.githubusercontent.com/alexandreprates/cbar-plugins/main/plugins/dev/github-notifications.1m.sh",
       "install_name": "github-notifications.1m.sh",
@@ -189,11 +189,14 @@
         "en"
       ],
       "dependencies": [
-        "gh"
+        "base64",
+        "gh",
+        "mkdir",
+        "tr"
       ],
       "env": [],
-      "sha256": "a6807bbdcf04c2823fcdb8d451e4d9f004fc8bdd98e551acd37ca3003f5c5fac",
-      "size_bytes": 885,
+      "sha256": "d3e3568dd9c0d031e437d964b597f929f57a9f3a7af05132d6430caaf8a27bac",
+      "size_bytes": 3451,
       "license": "GPL-3.0-only",
       "publisher": "AlexandrePrates",
       "publisher_url": "https://github.com/AlexandrePrates"
