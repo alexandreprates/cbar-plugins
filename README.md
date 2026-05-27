@@ -25,6 +25,7 @@ templates/       starter scripts for new plugin contributions
 - `plugins/system/memory-gauge.5s.sh` shows compact memory usage.
 - `plugins/system/disk.30s.sh` shows compact filesystem usage.
 - `plugins/network/public-ip.5m.sh` shows public and local IP status with copy actions.
+- `plugins/network/network-throughput.2s.sh` shows compact upload and download throughput.
 - `plugins/network/ping.10s.sh` shows compact latency to a configurable host.
 - `plugins/dev/docker-health.10s.sh` shows Docker daemon and container health.
 - `plugins/dev/github-notifications.1m.sh` shows GitHub notification status with an unread badge.
@@ -55,16 +56,16 @@ Then open a pull request from your fork. See [CONTRIBUTING.md](CONTRIBUTING.md),
 
 ## Good First Plugin Ideas
 
-- Battery status and time remaining.
 - VPN connection status.
 - Uptime and session duration.
 - Docker Compose project status.
 - GitHub pull request or issue shortcuts.
 - Clipboard history helper.
-- Audio input/output device switcher.
-- Weather summary from a configurable provider.
-- Pomodoro or focus timer.
 - Package update counter.
+- Kubernetes context indicator.
+- Git dirty watcher.
+- Systemd service status monitor.
+- SSH tunnel or remote host status.
 
 ## Installing A Plugin
 

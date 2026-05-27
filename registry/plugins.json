@@ -121,6 +121,37 @@
       "publisher_url": "https://github.com/AlexandrePrates"
     },
     {
+      "id": "network.network-throughput",
+      "name": "Network Throughput",
+      "category": "network",
+      "description": "Shows upload and download throughput as a compact panel chart.",
+      "path": "plugins/network/network-throughput.2s.sh",
+      "download_url": "https://raw.githubusercontent.com/alexandreprates/cbar-plugins/main/plugins/network/network-throughput.2s.sh",
+      "install_name": "network-throughput.2s.sh",
+      "interval": "2s",
+      "language": "bash",
+      "languages": [
+        "en"
+      ],
+      "dependencies": [
+        "awk",
+        "base64",
+        "cat",
+        "date",
+        "ip",
+        "mkdir",
+        "tr"
+      ],
+      "env": [
+        "CBAR_NETWORK_INTERFACE"
+      ],
+      "sha256": "d61495fed37fa142fc298b4377130dbc62b120a3e8acdc8fcd12560f4a78fde0",
+      "size_bytes": 6457,
+      "license": "GPL-3.0-only",
+      "publisher": "AlexandrePrates",
+      "publisher_url": "https://github.com/AlexandrePrates"
+    },
+    {
       "id": "network.ping",
       "name": "Ping",
       "category": "network",
