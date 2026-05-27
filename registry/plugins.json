@@ -90,33 +90,6 @@
       "publisher_url": "https://github.com/AlexandrePrates"
     },
     {
-      "id": "system.health",
-      "name": "System Health",
-      "category": "system",
-      "description": "Shows a compact local health summary.",
-      "path": "plugins/system/health.5s.sh",
-      "download_url": "https://raw.githubusercontent.com/alexandreprates/cbar-plugins/main/plugins/system/health.5s.sh",
-      "install_name": "health.5s.sh",
-      "interval": "5s",
-      "language": "bash",
-      "languages": [
-        "en"
-      ],
-      "dependencies": [
-        "awk",
-        "date",
-        "df"
-      ],
-      "env": [
-        "CBAR_HEALTH_DISK_WARN"
-      ],
-      "sha256": "ec095a41be1ed8206b8e3f49525cd49bb49f0b7b442b8452ae8f931934d98c0e",
-      "size_bytes": 944,
-      "license": "GPL-3.0-only",
-      "publisher": "AlexandrePrates",
-      "publisher_url": "https://github.com/AlexandrePrates"
-    },
-    {
       "id": "network.public-ip",
       "name": "Public IP",
       "category": "network",
