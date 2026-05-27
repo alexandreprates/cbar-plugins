@@ -1,12 +1,24 @@
 #!/usr/bin/env bash
-# cbar: Demonstrates an inline SVG image as a compact RAM usage gauge.
+# cbar: Shows RAM usage as a compact panel gauge.
 # deps: awk, base64, tr
-# env: CBAR_SHOWCASE_RAM_WARN, CBAR_SHOWCASE_RAM_CRIT
+# env: CBAR_MEMORY_WARN, CBAR_MEMORY_CRIT
 
 set -euo pipefail
 
-ram_warn="${CBAR_SHOWCASE_RAM_WARN:-85}"
-ram_crit="${CBAR_SHOWCASE_RAM_CRIT:-95}"
+ram_warn="${CBAR_MEMORY_WARN:-85}"
+ram_crit="${CBAR_MEMORY_CRIT:-95}"
+
+case "${ram_warn}" in
+  ''|*[!0-9]*)
+    ram_warn=85
+    ;;
+esac
+
+case "${ram_crit}" in
+  ''|*[!0-9]*)
+    ram_crit=95
+    ;;
+esac
 
 read -r mem_total mem_available < <(
   awk '
@@ -50,7 +62,7 @@ SVG
 
 echo "| image=${gauge_image}"
 echo "---"
-echo "Memory usage"
+echo "Memory"
 echo "--Used: ${used_gib} GiB (${used_percent}%) | disabled=true"
 echo "--Used: $(( used / 1024 )) MiB | disabled=true"
 echo "--Available: $(( mem_available / 1024 )) MiB | disabled=true"

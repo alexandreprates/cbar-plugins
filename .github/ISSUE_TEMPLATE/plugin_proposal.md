@@ -12,7 +12,7 @@ assignees: ""
 
 ## Category
 
-<!-- system, network, dev, productivity, showcase, or a proposed new category -->
+<!-- system, network, dev, productivity, or a proposed new category -->
 
 ## Expected Output
 

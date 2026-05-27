@@ -26,8 +26,11 @@ add_plugin() {
 
 # system
 add_plugin "system.cpu" "CPU" "system" "Shows load average and CPU core count." "plugins/system/cpu.5s.sh" "5s" "bash" "en" "awk,getconf,uptime" "" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
+add_plugin "system.cpu-chart" "CPU Chart" "system" "Shows CPU usage history as a compact panel chart." "plugins/system/cpu-chart.5s.sh" "5s" "bash" "en" "awk,base64,date,mkdir,tr" "CBAR_CPU_WARN" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
 add_plugin "system.memory" "Memory" "system" "Shows current memory usage." "plugins/system/memory.5s.sh" "5s" "bash" "en" "awk,free" "" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
+add_plugin "system.memory-gauge" "Memory Gauge" "system" "Shows RAM usage as a compact panel gauge." "plugins/system/memory-gauge.5s.sh" "5s" "bash" "en" "awk,base64,tr" "CBAR_MEMORY_WARN,CBAR_MEMORY_CRIT" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
 add_plugin "system.disk" "Disk" "system" "Shows root filesystem usage." "plugins/system/disk.30s.sh" "30s" "bash" "en" "df,awk" "CBAR_DISK_PATH" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
+add_plugin "system.health" "System Health" "system" "Shows a compact local health summary." "plugins/system/health.5s.sh" "5s" "bash" "en" "awk,date,df" "CBAR_HEALTH_DISK_WARN" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
 
 # network
 add_plugin "network.public-ip" "Public IP" "network" "Shows the current public IP address." "plugins/network/public-ip.5m.sh" "5m" "bash" "en" "curl,wl-copy,xclip" "CBAR_PUBLIC_IP_URL" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
@@ -37,14 +40,6 @@ add_plugin "network.ping" "Ping" "network" "Checks connectivity to a configurabl
 add_plugin "dev.docker-containers" "Docker Containers" "dev" "Summarizes Docker container state." "plugins/dev/docker-containers.10s.sh" "10s" "bash" "en" "docker" "" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
 add_plugin "dev.github-notifications" "GitHub Notifications" "dev" "Shows GitHub notification count when gh is authenticated." "plugins/dev/github-notifications.1m.sh" "1m" "bash" "en" "gh" "" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
 add_plugin "dev.openai-codex" "OpenAI Codex Usage" "dev" "Displays OpenAI Codex usage limits from local Codex session metadata." "plugins/dev/openai_codex.5m.sh" "5m" "bash" "en" "python3,sed,tr" "VAR_SHOW_7D,VAR_COLORS,VAR_SHOW_RESET,VAR_SHOW_BARS" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
-
-# showcase
-add_plugin "showcase.overview" "Showcase Overview" "showcase" "Demonstrates panel titles, cycle items, popup rows, nesting, alternates, hidden rows, disabled rows, and refresh." "plugins/showcase/showcase-overview.10s.sh" "10s" "bash" "en" "date" "" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
-add_plugin "showcase.actions" "Showcase Actions" "showcase" "Demonstrates links, shell actions, terminal actions, and refresh-after-action." "plugins/showcase/showcase-actions.30s.sh" "30s" "bash" "en" "date,printf,sh" "" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
-add_plugin "showcase.config" "Showcase Config" "showcase" "Demonstrates environment-variable driven plugin behavior." "plugins/showcase/showcase-config.1m.sh" "1m" "bash" "en" "date" "CBAR_SHOWCASE_NAME,CBAR_SHOWCASE_URL,CBAR_SHOWCASE_MODE" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
-add_plugin "showcase.memory-bar" "Showcase Memory Gauge" "showcase" "Demonstrates inline SVG images with a compact RAM usage gauge." "plugins/showcase/showcase-memory-bar.5s.sh" "5s" "bash" "en" "awk,base64,tr" "CBAR_SHOWCASE_RAM_WARN,CBAR_SHOWCASE_RAM_CRIT" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
-add_plugin "showcase.cpu-chart" "Showcase CPU Chart" "showcase" "Demonstrates inline SVG images with a tiny CPU usage history chart." "plugins/showcase/showcase-cpu-chart.5s.sh" "5s" "bash" "en" "awk,base64,date,mkdir,tr" "CBAR_SHOWCASE_CPU_WARN" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
-add_plugin "showcase.status" "Showcase Status" "showcase" "Demonstrates dynamic local status, thresholds, separators, and diagnostics." "plugins/showcase/showcase-status.5s.sh" "5s" "bash" "en" "awk,date,df,uptime" "CBAR_SHOWCASE_DISK_WARN" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
 
 # productivity
 add_plugin "productivity.timer" "Timer" "productivity" "Shows a simple countdown timer backed by per-user runtime state." "plugins/productivity/timer.1s.sh" "1s" "bash" "en" "date,mkdir,rm" "CBAR_TIMER_SECONDS" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"

@@ -1,14 +1,20 @@
 #!/usr/bin/env bash
-# cbar: Demonstrates dynamic status, simple thresholds, separators, and local diagnostics.
-# deps: awk, date, df, uptime
-# env: CBAR_SHOWCASE_DISK_WARN
+# cbar: Shows a compact system health summary.
+# deps: awk, date, df
+# env: CBAR_HEALTH_DISK_WARN
 
 set -euo pipefail
 
-disk_warn="${CBAR_SHOWCASE_DISK_WARN:-85}"
+disk_warn="${CBAR_HEALTH_DISK_WARN:-85}"
+case "${disk_warn}" in
+  ''|*[!0-9]*)
+    disk_warn=85
+    ;;
+esac
+
 disk_percent="$(df -P / | awk 'NR == 2 { gsub("%", "", $5); print $5 }')"
 load="$(awk '{ print $1 }' /proc/loadavg)"
-status="OK"
+status="Sys OK"
 
 if (( disk_percent >= disk_warn )); then
   status="Disk ${disk_percent}%"

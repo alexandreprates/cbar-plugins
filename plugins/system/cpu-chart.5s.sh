@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# cbar: Demonstrates an inline SVG image as a tiny CPU usage history chart.
+# cbar: Shows CPU usage history as a compact panel chart.
 # deps: awk, base64, date, mkdir, tr
-# env: CBAR_SHOWCASE_CPU_WARN
+# env: CBAR_CPU_WARN
 
 set -euo pipefail
 
-cpu_warn="${CBAR_SHOWCASE_CPU_WARN:-75}"
+cpu_warn="${CBAR_CPU_WARN:-75}"
 case "${cpu_warn}" in
   ''|*[!0-9]*)
     cpu_warn=75
@@ -13,7 +13,7 @@ case "${cpu_warn}" in
 esac
 history_size=5
 cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}/cbar"
-state_file="${cache_dir}/showcase-cpu-chart.state"
+state_file="${cache_dir}/cpu-chart.state"
 
 mkdir -p "$cache_dir"
 
@@ -105,7 +105,7 @@ SVG
 
 echo "| image=${chart_image}"
 echo "---"
-echo "CPU chart"
+echo "CPU"
 echo "--Latest sample: ${usage}% | disabled=true"
 echo "--History samples: ${history} | disabled=true"
 echo "--Warning threshold: ${cpu_warn}% | disabled=true"

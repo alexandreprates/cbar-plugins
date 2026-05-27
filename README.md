@@ -15,7 +15,6 @@ plugins/
   system/        local machine status and maintenance helpers
   network/       connectivity and network diagnostics
   dev/           developer workflow helpers
-  showcase/      examples that demonstrate cbar capabilities
   productivity/  lightweight desktop utilities
 templates/       starter scripts for new plugin contributions
 ```
@@ -23,23 +22,18 @@ templates/       starter scripts for new plugin contributions
 ## Included Plugins
 
 - `plugins/system/cpu.5s.sh` shows load average and CPU core count.
+- `plugins/system/cpu-chart.5s.sh` shows compact CPU usage history.
 - `plugins/system/memory.5s.sh` shows memory usage.
+- `plugins/system/memory-gauge.5s.sh` shows compact memory usage.
 - `plugins/system/disk.30s.sh` shows root filesystem usage.
+- `plugins/system/health.5s.sh` shows a compact local health summary.
 - `plugins/network/public-ip.5m.sh` shows the current public IP address.
 - `plugins/network/ping.10s.sh` checks connectivity to a configurable host.
 - `plugins/dev/docker-containers.10s.sh` summarizes Docker container state.
 - `plugins/dev/github-notifications.1m.sh` opens GitHub notifications and optionally shows a count when `gh` is authenticated.
 - `plugins/dev/openai_codex.5m.sh` displays OpenAI Codex usage limits from local Codex session metadata.
-- `plugins/showcase/showcase-overview.10s.sh` demonstrates panel titles, cycle items, popup rows, nesting, alternates, hidden rows, disabled rows, and refresh.
-- `plugins/showcase/showcase-actions.30s.sh` demonstrates links, shell actions, terminal actions, and refresh-after-action.
-- `plugins/showcase/showcase-config.1m.sh` demonstrates environment-variable driven plugin behavior.
-- `plugins/showcase/showcase-memory-bar.5s.sh` demonstrates inline SVG images with a compact RAM usage gauge.
-- `plugins/showcase/showcase-cpu-chart.5s.sh` demonstrates inline SVG images with a tiny CPU usage history chart.
-- `plugins/showcase/showcase-status.5s.sh` demonstrates dynamic local status, thresholds, separators, and diagnostics.
 - `plugins/productivity/timer.1s.sh` shows a simple countdown backed by per-user runtime state.
 - `plugins/productivity/calendar.5m.sh` shows today's date and a quick calendar action.
-
-The `showcase/` plugins are capability examples for plugin authors. They demonstrate supported cbar output features; they are not the only expected plugin style.
 
 ## Plugin Templates
 
