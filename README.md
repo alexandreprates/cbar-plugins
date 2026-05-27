@@ -1,14 +1,14 @@
 # cbar plugins
 
-The official community plugin catalog for [cbar](https://github.com/alexandreprates/cbar), the COSMIC panel applet for scriptable desktop workflows.
+Curated plugin catalog for [cbar](https://github.com/alexandreprates/cbar), the COSMIC panel applet for scriptable desktop workflows.
 
-This repository keeps plugin development separate from the cbar applet itself. The `cbar` repository owns the applet, parser, runtime, and COSMIC integration; `cbar-plugins` owns curated scripts, contribution guidance, and the generated catalog metadata used for browsing and installation.
+This repository contains ready-to-install plugins and the generated catalog metadata used by cbar to browse, verify, and install them. The main `cbar` repository owns the applet, parser, runtime, and COSMIC integration; this repository focuses on useful, inspectable scripts for real panel workflows.
 
-Community contributions are welcome. Plugins are intentionally small and inspectable: each plugin writes plain text to stdout, using the cbar plugin output format to define panel text, popup entries, links, shell actions, refresh behavior, and terminal actions.
+Plugins in this catalog are designed for the COSMIC panel: compact visual indicators in the panel, with details and actions in the popup menu. The goal is useful status at a glance, not demos or large text widgets competing for panel space.
 
-The repository also publishes a machine-readable catalog at [registry/plugins.json](registry/plugins.json). cbar can use this registry to browse, verify, and install plugins directly from the applet settings.
+The machine-readable catalog is published at [registry/plugins.json](registry/plugins.json).
 
-## Plugin Categories
+## Catalog Layout
 
 ```text
 plugins/
@@ -21,21 +21,50 @@ templates/       starter scripts for new plugin contributions
 
 ## Included Plugins
 
-- `plugins/system/cpu-chart.5s.sh` shows compact CPU usage history.
-- `plugins/system/memory-gauge.5s.sh` shows compact memory usage.
-- `plugins/system/disk.30s.sh` shows compact filesystem usage.
-- `plugins/system/service-status.30s.sh` shows compact systemd service health.
-- `plugins/system/updates-available.30m.sh` shows available updates with a compact badge.
+System:
+
+- `plugins/system/cpu-chart.5s.sh` shows CPU usage history as a mini chart.
+- `plugins/system/memory-gauge.5s.sh` shows RAM usage as a compact gauge.
+- `plugins/system/disk.30s.sh` shows filesystem usage as segmented blocks.
+- `plugins/system/service-status.30s.sh` shows systemd service health.
+- `plugins/system/updates-available.30m.sh` shows APT and Flatpak updates with a badge.
+
+Network:
+
 - `plugins/network/public-ip.5m.sh` shows public and local IP status with copy actions.
-- `plugins/network/network-throughput.2s.sh` shows compact upload and download throughput.
-- `plugins/network/vpn-status.10s.sh` shows VPN connection status with copy actions.
+- `plugins/network/network-throughput.2s.sh` shows upload and download throughput.
+- `plugins/network/vpn-status.10s.sh` shows VPN connection status and VPN IP details.
 - `plugins/network/ssh-hosts.30s.sh` shows configured SSH host reachability.
-- `plugins/network/ping.10s.sh` shows compact latency to a configurable host.
+- `plugins/network/ping.10s.sh` shows latency to a configurable host.
+
+Developer:
+
 - `plugins/dev/docker-health.10s.sh` shows Docker daemon and container health.
-- `plugins/dev/github-notifications.1m.sh` shows GitHub notification status with an unread badge.
+- `plugins/dev/github-notifications.1m.sh` shows GitHub notifications with an unread badge.
 - `plugins/dev/kubernetes-context.30s.sh` shows Kubernetes context and namespace status.
-- `plugins/dev/openai_codex.5m.sh` displays OpenAI Codex usage limits from local Codex session metadata.
-- `plugins/productivity/timer.1s.sh` shows a compact animated hourglass countdown timer.
+- `plugins/dev/openai_codex.5m.sh` shows OpenAI Codex usage limits from local session metadata.
+
+Productivity:
+
+- `plugins/productivity/timer.1s.sh` shows an animated hourglass countdown timer.
+
+## Installing A Plugin
+
+Install from cbar's catalog browser when available, or copy a script into your local cbar plugin directory:
+
+```bash
+mkdir -p ~/.config/cbar/plugins
+cp plugins/system/memory-gauge.5s.sh ~/.config/cbar/plugins/
+chmod +x ~/.config/cbar/plugins/memory-gauge.5s.sh
+```
+
+Restart cbar or trigger a refresh after adding new files. Current cbar releases discover plugins at startup.
+
+## Plugin Design
+
+Catalog plugins should be small, readable shell scripts with a narrow purpose. Prefer compact icons, gauges, badges, and mini charts in the panel; put labels, values, diagnostics, links, and shell actions in the popup menu.
+
+Avoid duplicating features COSMIC already provides well by default, such as built-in date, audio, brightness, weather, and battery indicators. New plugins should add useful workflow-specific status or actions.
 
 ## Plugin Templates
 
@@ -43,7 +72,7 @@ templates/       starter scripts for new plugin contributions
 - `templates/menu.5m.sh` demonstrates sections, disabled rows, alternate rows, links, shell actions, terminal actions, and refresh-after-action.
 - `templates/image.5s.sh` demonstrates a compact inline SVG image suitable for gauges or visual indicators.
 
-## Contribute A Plugin
+## Contributing
 
 The shortest path for a new plugin contribution is:
 
@@ -64,24 +93,14 @@ Then open a pull request from your fork. See [CONTRIBUTING.md](CONTRIBUTING.md),
 - Uptime and session duration.
 - Docker Compose project status.
 - GitHub pull request or issue shortcuts.
-- Clipboard history helper.
 - Git dirty watcher.
-
-## Installing A Plugin
-
-Copy a plugin into your cbar plugin directory and make it executable:
-
-```bash
-mkdir -p ~/.config/cbar/plugins
-cp plugins/system/memory-gauge.5s.sh ~/.config/cbar/plugins/
-chmod +x ~/.config/cbar/plugins/memory-gauge.5s.sh
-```
-
-Restart cbar or trigger a refresh after adding new files. Current cbar releases discover plugins at startup.
+- CI/build status.
+- Backup status.
+- Certificate expiry monitor.
 
 ## Plugin Format
 
-See [docs/plugin-format.md](docs/plugin-format.md) for the supported output format and [docs/style-guide.md](docs/style-guide.md) for contribution conventions.
+Each plugin writes plain text to stdout using the cbar plugin output format: panel content, popup entries, links, shell actions, refresh behavior, and terminal actions. See [docs/plugin-format.md](docs/plugin-format.md) and [docs/style-guide.md](docs/style-guide.md).
 
 ## Rebuilding The Registry
 
