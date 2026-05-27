@@ -119,6 +119,37 @@
       "publisher_url": "https://github.com/AlexandrePrates"
     },
     {
+      "id": "system.updates-available",
+      "name": "Updates Available",
+      "category": "system",
+      "description": "Shows available APT and Flatpak updates with a compact badge.",
+      "path": "plugins/system/updates-available.30m.sh",
+      "download_url": "https://raw.githubusercontent.com/alexandreprates/cbar-plugins/main/plugins/system/updates-available.30m.sh",
+      "install_name": "updates-available.30m.sh",
+      "interval": "30m",
+      "language": "bash",
+      "languages": [
+        "en"
+      ],
+      "dependencies": [
+        "apt",
+        "awk",
+        "base64",
+        "cosmic-store",
+        "flatpak",
+        "tr"
+      ],
+      "env": [
+        "CBAR_UPDATES_INCLUDE_APT",
+        "CBAR_UPDATES_INCLUDE_FLATPAK"
+      ],
+      "sha256": "bafab1eb7d3524a687370b985ad5446a8b056de81eab807d9725f71d1049835d",
+      "size_bytes": 3908,
+      "license": "GPL-3.0-only",
+      "publisher": "AlexandrePrates",
+      "publisher_url": "https://github.com/AlexandrePrates"
+    },
+    {
       "id": "network.public-ip",
       "name": "Public IP",
       "category": "network",

@@ -25,6 +25,7 @@ templates/       starter scripts for new plugin contributions
 - `plugins/system/memory-gauge.5s.sh` shows compact memory usage.
 - `plugins/system/disk.30s.sh` shows compact filesystem usage.
 - `plugins/system/service-status.30s.sh` shows compact systemd service health.
+- `plugins/system/updates-available.30m.sh` shows available updates with a compact badge.
 - `plugins/network/public-ip.5m.sh` shows public and local IP status with copy actions.
 - `plugins/network/network-throughput.2s.sh` shows compact upload and download throughput.
 - `plugins/network/vpn-status.10s.sh` shows VPN connection status with copy actions.
@@ -62,7 +63,6 @@ Then open a pull request from your fork. See [CONTRIBUTING.md](CONTRIBUTING.md),
 - Docker Compose project status.
 - GitHub pull request or issue shortcuts.
 - Clipboard history helper.
-- Package update counter.
 - Kubernetes context indicator.
 - Git dirty watcher.
 - SSH tunnel or remote host status.
