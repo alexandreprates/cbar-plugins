@@ -149,24 +149,28 @@
       "publisher_url": "https://github.com/AlexandrePrates"
     },
     {
-      "id": "dev.docker-containers",
-      "name": "Docker Containers",
+      "id": "dev.docker-health",
+      "name": "Docker Health",
       "category": "dev",
-      "description": "Summarizes Docker container state.",
-      "path": "plugins/dev/docker-containers.10s.sh",
-      "download_url": "https://raw.githubusercontent.com/alexandreprates/cbar-plugins/main/plugins/dev/docker-containers.10s.sh",
-      "install_name": "docker-containers.10s.sh",
+      "description": "Shows Docker daemon and container health.",
+      "path": "plugins/dev/docker-health.10s.sh",
+      "download_url": "https://raw.githubusercontent.com/alexandreprates/cbar-plugins/main/plugins/dev/docker-health.10s.sh",
+      "install_name": "docker-health.10s.sh",
       "interval": "10s",
       "language": "bash",
       "languages": [
         "en"
       ],
       "dependencies": [
-        "docker"
+        "awk",
+        "base64",
+        "docker",
+        "sed",
+        "tr"
       ],
       "env": [],
-      "sha256": "465ba3ccfca8056d77b3f5baec3e0f4560f61a4bd02207bef71f316507959a61",
-      "size_bytes": 869,
+      "sha256": "86043904808b303484c14ce4fc8fb3dac64d9679fb4028dbb055b9bcec62ffd4",
+      "size_bytes": 4226,
       "license": "GPL-3.0-only",
       "publisher": "AlexandrePrates",
       "publisher_url": "https://github.com/AlexandrePrates"

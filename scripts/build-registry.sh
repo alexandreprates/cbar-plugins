@@ -34,7 +34,7 @@ add_plugin "network.public-ip" "Public IP" "network" "Shows public and local IP 
 add_plugin "network.ping" "Ping" "network" "Shows compact latency to a configurable host." "plugins/network/ping.10s.sh" "10s" "bash" "en" "awk,ping" "CBAR_PING_HOST,CBAR_PING_WARN_MS,CBAR_PING_CRIT_MS" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
 
 # dev
-add_plugin "dev.docker-containers" "Docker Containers" "dev" "Summarizes Docker container state." "plugins/dev/docker-containers.10s.sh" "10s" "bash" "en" "docker" "" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
+add_plugin "dev.docker-health" "Docker Health" "dev" "Shows Docker daemon and container health." "plugins/dev/docker-health.10s.sh" "10s" "bash" "en" "awk,base64,docker,sed,tr" "" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
 add_plugin "dev.github-notifications" "GitHub Notifications" "dev" "Shows GitHub notification count when gh is authenticated." "plugins/dev/github-notifications.1m.sh" "1m" "bash" "en" "gh" "" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
 add_plugin "dev.openai-codex" "OpenAI Codex Usage" "dev" "Displays OpenAI Codex usage limits from local Codex session metadata." "plugins/dev/openai_codex.5m.sh" "5m" "bash" "en" "python3,sed,tr" "VAR_SHOW_7D,VAR_COLORS,VAR_SHOW_RESET,VAR_SHOW_BARS" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
 
