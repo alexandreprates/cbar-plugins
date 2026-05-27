@@ -21,7 +21,6 @@ templates/       starter scripts for new plugin contributions
 
 ## Included Plugins
 
-- `plugins/system/cpu.5s.sh` shows load average and CPU core count.
 - `plugins/system/cpu-chart.5s.sh` shows compact CPU usage history.
 - `plugins/system/memory.5s.sh` shows memory usage.
 - `plugins/system/memory-gauge.5s.sh` shows compact memory usage.

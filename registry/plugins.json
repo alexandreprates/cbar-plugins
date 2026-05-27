@@ -4,31 +4,6 @@
   "raw_base_url": "https://raw.githubusercontent.com/alexandreprates/cbar-plugins/main",
   "plugins": [
     {
-      "id": "system.cpu",
-      "name": "CPU",
-      "category": "system",
-      "description": "Shows load average and CPU core count.",
-      "path": "plugins/system/cpu.5s.sh",
-      "download_url": "https://raw.githubusercontent.com/alexandreprates/cbar-plugins/main/plugins/system/cpu.5s.sh",
-      "install_name": "cpu.5s.sh",
-      "interval": "5s",
-      "language": "bash",
-      "languages": [
-        "en"
-      ],
-      "dependencies": [
-        "awk",
-        "getconf",
-        "uptime"
-      ],
-      "env": [],
-      "sha256": "7ace6abafbb5cec3f83fc8037a21b330f174cfdb7b11391eacd4d136f1bbbf66",
-      "size_bytes": 580,
-      "license": "GPL-3.0-only",
-      "publisher": "AlexandrePrates",
-      "publisher_url": "https://github.com/AlexandrePrates"
-    },
-    {
       "id": "system.cpu-chart",
       "name": "CPU Chart",
       "category": "system",
@@ -44,15 +19,14 @@
       "dependencies": [
         "awk",
         "base64",
-        "date",
         "mkdir",
         "tr"
       ],
       "env": [
         "CBAR_CPU_WARN"
       ],
-      "sha256": "6da4e96308d4465944fa600d567b30252487a2cffe24f33cf6b9308148ddba9c",
-      "size_bytes": 2668,
+      "sha256": "18c90fa539ad83b27fddab8642d30f474eb340bdc5e4953114363decac1b5f94",
+      "size_bytes": 2851,
       "license": "GPL-3.0-only",
       "publisher": "AlexandrePrates",
       "publisher_url": "https://github.com/AlexandrePrates"

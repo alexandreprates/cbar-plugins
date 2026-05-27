@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # cbar: Shows CPU usage history as a compact panel chart.
-# deps: awk, base64, date, mkdir, tr
+# deps: awk, base64, mkdir, tr
 # env: CBAR_CPU_WARN
 
 set -euo pipefail
@@ -62,6 +62,20 @@ history="$(printf '%s\n' "$history" | awk -v limit="$history_size" '{
   }
 }')"
 
+read -r average peak < <(
+  printf '%s\n' "$history" | awk '{
+    total = 0
+    peak = 0
+    for (i = 1; i <= NF; i++) {
+      total += $i
+      if ($i > peak) {
+        peak = $i
+      }
+    }
+    printf "%d %d\n", (NF ? total / NF : 0), peak
+  }'
+)
+
 {
   printf '%s\n' "$idle"
   printf '%s\n' "$total"
@@ -97,7 +111,6 @@ svg_to_base64() {
 chart_image="$(
   cat <<SVG | svg_to_base64
 <svg xmlns="http://www.w3.org/2000/svg" width="${chart_width}" height="${chart_height}" viewBox="0 0 ${chart_width} ${chart_height}">
-  <rect width="${chart_width}" height="${chart_height}" rx="3" fill="#161b22"/>
   ${bars}
 </svg>
 SVG
@@ -106,8 +119,9 @@ SVG
 echo "| image=${chart_image}"
 echo "---"
 echo "CPU"
-echo "--Latest sample: ${usage}% | disabled=true"
-echo "--History samples: ${history} | disabled=true"
-echo "--Warning threshold: ${cpu_warn}% | disabled=true"
+echo "--Current: ${usage}% | disabled=true"
+echo "--Average: ${average}% | disabled=true"
+echo "--Peak: ${peak}% | disabled=true"
+echo "--Warning: ${cpu_warn}% | disabled=true"
 echo "Open CPU details | shell=/bin/sh param1=-lc param2='top -b -n 1 | head -20; printf \"\\n\"; read -r -p \"Press enter to close...\"' terminal=true"
 echo "Reset chart history | shell=/bin/sh param1=-lc param2='rm -f \"${state_file}\"' refresh=true"
