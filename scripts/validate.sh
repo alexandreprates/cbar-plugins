@@ -31,6 +31,21 @@ if missing:
     raise SystemExit(f"missing publisher metadata: {', '.join(missing)}")
 PY
 
+printf 'checking output language metadata...\n'
+python3 - <<'PY'
+import json
+from pathlib import Path
+
+registry = json.loads(Path("registry/plugins.json").read_text())
+missing = [
+    plugin["id"]
+    for plugin in registry["plugins"]
+    if not plugin.get("languages")
+]
+if missing:
+    raise SystemExit(f"missing output language metadata: {', '.join(missing)}")
+PY
+
 printf 'checking registry freshness...\n'
 git diff --exit-code -- registry/plugins.json
 

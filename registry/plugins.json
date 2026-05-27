@@ -13,7 +13,14 @@
       "install_name": "cpu.5s.sh",
       "interval": "5s",
       "language": "bash",
-      "dependencies": ["awk", "getconf", "uptime"],
+      "languages": [
+        "en"
+      ],
+      "dependencies": [
+        "awk",
+        "getconf",
+        "uptime"
+      ],
       "env": [],
       "sha256": "7ace6abafbb5cec3f83fc8037a21b330f174cfdb7b11391eacd4d136f1bbbf66",
       "size_bytes": 580,
@@ -31,7 +38,13 @@
       "install_name": "memory.5s.sh",
       "interval": "5s",
       "language": "bash",
-      "dependencies": ["awk", "free"],
+      "languages": [
+        "en"
+      ],
+      "dependencies": [
+        "awk",
+        "free"
+      ],
       "env": [],
       "sha256": "c917f5f2d12816098eafc27e6032b2715671f6e883ee4314270fbd759f0bd91c",
       "size_bytes": 588,
@@ -49,8 +62,16 @@
       "install_name": "disk.30s.sh",
       "interval": "30s",
       "language": "bash",
-      "dependencies": ["df", "awk"],
-      "env": ["CBAR_DISK_PATH"],
+      "languages": [
+        "en"
+      ],
+      "dependencies": [
+        "df",
+        "awk"
+      ],
+      "env": [
+        "CBAR_DISK_PATH"
+      ],
       "sha256": "bdcdd242b245a1a88451204170ce3c102c22b76958e431027a0f4c4c5c3cda81",
       "size_bytes": 639,
       "license": "GPL-3.0-only",
@@ -67,10 +88,19 @@
       "install_name": "public-ip.5m.sh",
       "interval": "5m",
       "language": "bash",
-      "dependencies": ["curl"],
-      "env": ["CBAR_PUBLIC_IP_URL"],
-      "sha256": "3073a31256ebe81985b53426e4fb420179ed4b6efb7301f7c53fbd91456fee4c",
-      "size_bytes": 719,
+      "languages": [
+        "en"
+      ],
+      "dependencies": [
+        "curl",
+        "wl-copy",
+        "xclip"
+      ],
+      "env": [
+        "CBAR_PUBLIC_IP_URL"
+      ],
+      "sha256": "f2456db552dbd25893251c4aca16c956f69bc685008ae2176422c5b1b62e2ca1",
+      "size_bytes": 1022,
       "license": "GPL-3.0-only",
       "publisher": "AlexandrePrates",
       "publisher_url": "https://github.com/AlexandrePrates"
@@ -85,10 +115,17 @@
       "install_name": "ping.10s.sh",
       "interval": "10s",
       "language": "bash",
-      "dependencies": ["ping"],
-      "env": ["CBAR_PING_HOST"],
-      "sha256": "ead30c941d7703224d8c048bb85731ded09bdfde1326d01f8dde1da2007e1e58",
-      "size_bytes": 895,
+      "languages": [
+        "en"
+      ],
+      "dependencies": [
+        "ping"
+      ],
+      "env": [
+        "CBAR_PING_HOST"
+      ],
+      "sha256": "6e2f4c50e98633b42ca20d84776529a7481aa62600d67994c62b950ba0981557",
+      "size_bytes": 965,
       "license": "GPL-3.0-only",
       "publisher": "AlexandrePrates",
       "publisher_url": "https://github.com/AlexandrePrates"
@@ -103,7 +140,12 @@
       "install_name": "docker-containers.10s.sh",
       "interval": "10s",
       "language": "bash",
-      "dependencies": ["docker"],
+      "languages": [
+        "en"
+      ],
+      "dependencies": [
+        "docker"
+      ],
       "env": [],
       "sha256": "465ba3ccfca8056d77b3f5baec3e0f4560f61a4bd02207bef71f316507959a61",
       "size_bytes": 869,
@@ -121,7 +163,12 @@
       "install_name": "github-notifications.1m.sh",
       "interval": "1m",
       "language": "bash",
-      "dependencies": ["gh"],
+      "languages": [
+        "en"
+      ],
+      "dependencies": [
+        "gh"
+      ],
       "env": [],
       "sha256": "a6807bbdcf04c2823fcdb8d451e4d9f004fc8bdd98e551acd37ca3003f5c5fac",
       "size_bytes": 885,
@@ -139,8 +186,20 @@
       "install_name": "openai_codex.5m.sh",
       "interval": "5m",
       "language": "bash",
-      "dependencies": ["python3", "sed", "tr"],
-      "env": ["VAR_SHOW_7D", "VAR_COLORS", "VAR_SHOW_RESET", "VAR_SHOW_BARS"],
+      "languages": [
+        "en"
+      ],
+      "dependencies": [
+        "python3",
+        "sed",
+        "tr"
+      ],
+      "env": [
+        "VAR_SHOW_7D",
+        "VAR_COLORS",
+        "VAR_SHOW_RESET",
+        "VAR_SHOW_BARS"
+      ],
       "sha256": "1a7db530a5cfb1ef7503c931be1b4a2c38642e84613438d7a57b15adf974c384",
       "size_bytes": 13772,
       "license": "GPL-3.0-only",
@@ -157,7 +216,12 @@
       "install_name": "showcase-overview.10s.sh",
       "interval": "10s",
       "language": "bash",
-      "dependencies": ["date"],
+      "languages": [
+        "en"
+      ],
+      "dependencies": [
+        "date"
+      ],
       "env": [],
       "sha256": "890fee90cec6baa1a395b461d49d9f09e41ac1214b52912a06b00eb82d076a49",
       "size_bytes": 840,
@@ -175,7 +239,14 @@
       "install_name": "showcase-actions.30s.sh",
       "interval": "30s",
       "language": "bash",
-      "dependencies": ["date", "printf", "sh"],
+      "languages": [
+        "en"
+      ],
+      "dependencies": [
+        "date",
+        "printf",
+        "sh"
+      ],
       "env": [],
       "sha256": "62a3cd8b8d1d7f1590d219bd9b4f59b8291e382fe93984faec22b5a4054577bd",
       "size_bytes": 847,
@@ -193,10 +264,19 @@
       "install_name": "showcase-config.1m.sh",
       "interval": "1m",
       "language": "bash",
-      "dependencies": ["date"],
-      "env": ["CBAR_SHOWCASE_NAME", "CBAR_SHOWCASE_URL", "CBAR_SHOWCASE_MODE"],
-      "sha256": "18a0e3952243a2497c7b325ca9823616ff700032006182c3f400a54d8a98a3ae",
-      "size_bytes": 1072,
+      "languages": [
+        "en"
+      ],
+      "dependencies": [
+        "date"
+      ],
+      "env": [
+        "CBAR_SHOWCASE_NAME",
+        "CBAR_SHOWCASE_URL",
+        "CBAR_SHOWCASE_MODE"
+      ],
+      "sha256": "c81e3f40a1f5a4173a36cf105b427a6b6fcef01c7fa21d2785b2da1d851e772a",
+      "size_bytes": 1270,
       "license": "GPL-3.0-only",
       "publisher": "AlexandrePrates",
       "publisher_url": "https://github.com/AlexandrePrates"
@@ -211,8 +291,18 @@
       "install_name": "showcase-memory-bar.5s.sh",
       "interval": "5s",
       "language": "bash",
-      "dependencies": ["awk", "base64", "tr"],
-      "env": ["CBAR_SHOWCASE_RAM_WARN", "CBAR_SHOWCASE_RAM_CRIT"],
+      "languages": [
+        "en"
+      ],
+      "dependencies": [
+        "awk",
+        "base64",
+        "tr"
+      ],
+      "env": [
+        "CBAR_SHOWCASE_RAM_WARN",
+        "CBAR_SHOWCASE_RAM_CRIT"
+      ],
       "sha256": "a796bf408ec3b5feb1b44fd62aee16b60a54180ba96b9e06baca58251875daae",
       "size_bytes": 2229,
       "license": "GPL-3.0-only",
@@ -229,10 +319,21 @@
       "install_name": "showcase-cpu-chart.5s.sh",
       "interval": "5s",
       "language": "bash",
-      "dependencies": ["awk", "base64", "mkdir", "tr"],
-      "env": ["CBAR_SHOWCASE_CPU_WARN"],
-      "sha256": "c2b7da3eb06eacb4b4457cfa9cd5931e03b63bb37fcd77d3a643ba3ff2b9b3c3",
-      "size_bytes": 2654,
+      "languages": [
+        "en"
+      ],
+      "dependencies": [
+        "awk",
+        "base64",
+        "date",
+        "mkdir",
+        "tr"
+      ],
+      "env": [
+        "CBAR_SHOWCASE_CPU_WARN"
+      ],
+      "sha256": "da5cac03a0927f0c46eeaabc268227858f522490589d81ccc6eb1a6208fd5cba",
+      "size_bytes": 2719,
       "license": "GPL-3.0-only",
       "publisher": "AlexandrePrates",
       "publisher_url": "https://github.com/AlexandrePrates"
@@ -247,8 +348,18 @@
       "install_name": "showcase-status.5s.sh",
       "interval": "5s",
       "language": "bash",
-      "dependencies": ["awk", "date", "df", "uptime"],
-      "env": ["CBAR_SHOWCASE_DISK_WARN"],
+      "languages": [
+        "en"
+      ],
+      "dependencies": [
+        "awk",
+        "date",
+        "df",
+        "uptime"
+      ],
+      "env": [
+        "CBAR_SHOWCASE_DISK_WARN"
+      ],
       "sha256": "fce52ee1bf584c7ea39a9bf5fa615d500395f78954280f36dd2eb3f9a98c9c06",
       "size_bytes": 928,
       "license": "GPL-3.0-only",
@@ -259,16 +370,25 @@
       "id": "productivity.timer",
       "name": "Timer",
       "category": "productivity",
-      "description": "Shows a simple countdown timer backed by /tmp.",
+      "description": "Shows a simple countdown timer backed by per-user runtime state.",
       "path": "plugins/productivity/timer.1s.sh",
       "download_url": "https://raw.githubusercontent.com/alexandreprates/cbar-plugins/main/plugins/productivity/timer.1s.sh",
       "install_name": "timer.1s.sh",
       "interval": "1s",
       "language": "bash",
-      "dependencies": ["date", "rm"],
-      "env": ["CBAR_TIMER_SECONDS"],
-      "sha256": "a2bfd6c5c4b8ac10a0c35a5936f158a21d2f0301b4455c5a1b4f7ccae5f8059e",
-      "size_bytes": 1042,
+      "languages": [
+        "en"
+      ],
+      "dependencies": [
+        "date",
+        "mkdir",
+        "rm"
+      ],
+      "env": [
+        "CBAR_TIMER_SECONDS"
+      ],
+      "sha256": "f0d93df8706b7fb6c8ffdc63736aaf9dbba2c9a77054ca79673a39c41cda9a27",
+      "size_bytes": 1364,
       "license": "GPL-3.0-only",
       "publisher": "AlexandrePrates",
       "publisher_url": "https://github.com/AlexandrePrates"
@@ -283,10 +403,18 @@
       "install_name": "calendar.5m.sh",
       "interval": "5m",
       "language": "bash",
-      "dependencies": ["date", "cal"],
-      "env": ["CBAR_CALENDAR_URL"],
-      "sha256": "dc55ef4425a4109151fe46bb1b4c4db37e3ca810eea50fef010deb409f37a301",
-      "size_bytes": 527,
+      "languages": [
+        "en"
+      ],
+      "dependencies": [
+        "date",
+        "cal"
+      ],
+      "env": [
+        "CBAR_CALENDAR_URL"
+      ],
+      "sha256": "6f4ac334eb58f67008b52f3b0fc62ac8d7a1e3921595998346e77c19526bb8a5",
+      "size_bytes": 641,
       "license": "GPL-3.0-only",
       "publisher": "AlexandrePrates",
       "publisher_url": "https://github.com/AlexandrePrates"

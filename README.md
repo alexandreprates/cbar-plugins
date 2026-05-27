@@ -36,7 +36,7 @@ templates/       starter scripts for new plugin contributions
 - `plugins/showcase/showcase-memory-bar.5s.sh` demonstrates inline SVG images with a compact RAM usage gauge.
 - `plugins/showcase/showcase-cpu-chart.5s.sh` demonstrates inline SVG images with a tiny CPU usage history chart.
 - `plugins/showcase/showcase-status.5s.sh` demonstrates dynamic local status, thresholds, separators, and diagnostics.
-- `plugins/productivity/timer.1s.sh` shows a simple countdown backed by `/tmp`.
+- `plugins/productivity/timer.1s.sh` shows a simple countdown backed by per-user runtime state.
 - `plugins/productivity/calendar.5m.sh` shows today's date and a quick calendar action.
 
 The `showcase/` plugins are capability examples for plugin authors. They demonstrate supported cbar output features; they are not the only expected plugin style.
@@ -100,7 +100,7 @@ After changing plugin files or metadata, rebuild the catalog:
 ./scripts/build-registry.sh
 ```
 
-The registry includes plugin metadata, download URLs, file sizes, and SHA-256 checksums used by cbar before installing a plugin.
+The registry includes plugin metadata, output language badges, download URLs, file sizes, and SHA-256 checksums used by cbar before installing a plugin.
 
 ## Inspiration
 

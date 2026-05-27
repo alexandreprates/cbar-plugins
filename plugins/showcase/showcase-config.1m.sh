@@ -11,6 +11,11 @@ mode="${CBAR_SHOWCASE_MODE:-normal}"
 updated="$(date '+%H:%M')"
 script_path="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)/$(basename -- "${BASH_SOURCE[0]}")"
 
+name="${name//$'\n'/ }"
+if [[ ! "${url}" =~ ^https?://[^[:space:]\|]+$ ]]; then
+  url="https://github.com/alexandreprates/cbar"
+fi
+
 case "${mode}" in
   quiet)
     title="${name} quiet"
@@ -18,7 +23,11 @@ case "${mode}" in
   focus)
     title="${name} focus"
     ;;
+  normal)
+    title="${name} ${updated}"
+    ;;
   *)
+    mode="normal"
     title="${name} ${updated}"
     ;;
 esac

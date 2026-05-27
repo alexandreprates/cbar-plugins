@@ -7,6 +7,10 @@ set -u
 
 host="${CBAR_PING_HOST:-1.1.1.1}"
 
+if [[ ! "${host}" =~ ^[A-Za-z0-9_.:-]+$ ]]; then
+  host="1.1.1.1"
+fi
+
 if ! command -v ping >/dev/null 2>&1; then
   echo "Ping ?"
   echo "---"

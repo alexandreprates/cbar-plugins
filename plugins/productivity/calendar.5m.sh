@@ -8,6 +8,10 @@ set -u
 today="$(date '+%a %d %b')"
 calendar_url="${CBAR_CALENDAR_URL:-https://calendar.google.com}"
 
+if [[ ! "${calendar_url}" =~ ^https?://[^[:space:]\|]+$ ]]; then
+  calendar_url="https://calendar.google.com"
+fi
+
 echo "${today}"
 echo "---"
 echo "Today: $(date '+%Y-%m-%d') | disabled=true"

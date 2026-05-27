@@ -10,7 +10,7 @@ Plugins run locally as the current user. Reviewers will prioritize clarity, safe
 2. Copy a template, copy a similar existing plugin, or start a new executable script with a filename interval such as `battery.30s.sh`, `calendar.5m.sh`, or `backup.1h.sh`.
 3. Keep the output compatible with cbar. See [docs/plugin-format.md](docs/plugin-format.md) for panel titles, popup rows, actions, separators, and parameters.
 4. Add or update the plugin header with the purpose, dependencies, and environment variables.
-5. Document non-standard dependencies, supported environment variables, and publisher metadata in `scripts/build-registry.sh`.
+5. Document non-standard dependencies, supported environment variables, output languages, and publisher metadata in `scripts/build-registry.sh`.
 6. Run the validation commands below.
 7. Rebuild `registry/plugins.json`.
 8. Open a pull request from your fork.
@@ -73,10 +73,12 @@ Metadata should include any non-standard dependencies and environment variables 
 Add new entries under the matching category comment in `scripts/build-registry.sh`, such as `# system`, `# network`, `# dev`, `# showcase`, or `# productivity`. Keep the field order used by `add_plugin`:
 
 ```text
-id, name, category, description, path, interval, language, dependencies, env, license, publisher, publisher_url
+id, name, category, description, path, interval, language, languages, dependencies, env, license, publisher, publisher_url
 ```
 
-Use comma-separated values for `dependencies` and `env`, or an empty string when none are needed. Keep generated fields such as `sha256`, `size_bytes`, `download_url`, and `install_name` out of manual metadata; the builder computes them.
+Use comma-separated values for `languages`, `dependencies`, and `env`, or an empty string when none are needed. Keep generated fields such as `sha256`, `size_bytes`, `download_url`, and `install_name` out of manual metadata; the builder computes them.
+
+Use `language` for the plugin implementation language, such as `bash`. Use `languages` for the human-facing output language tags shown as cbar catalog badges, such as `en`, `pt-BR`, or `en,pt-BR`. Leave `languages` empty only when the plugin output is language-neutral or intentionally unspecified.
 
 Each catalog plugin must also include:
 
@@ -128,6 +130,7 @@ git diff -- registry/plugins.json
 - The script output follows the cbar plugin format.
 - Dependencies and environment variables are documented in the header.
 - Dependencies and environment variables are reflected in registry metadata.
+- Output languages are reflected in registry metadata when the plugin displays human-facing text.
 - Publisher metadata is present and points to the contributor's GitHub identity.
 - No secrets, tokens, private hosts, or personal paths are hardcoded.
 - Remote calls are necessary for the plugin's purpose and fail predictably.

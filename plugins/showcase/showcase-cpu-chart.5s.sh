@@ -6,6 +6,11 @@
 set -euo pipefail
 
 cpu_warn="${CBAR_SHOWCASE_CPU_WARN:-75}"
+case "${cpu_warn}" in
+  ''|*[!0-9]*)
+    cpu_warn=75
+    ;;
+esac
 history_size=5
 cache_dir="${XDG_CACHE_HOME:-$HOME/.cache}/cbar"
 state_file="${cache_dir}/showcase-cpu-chart.state"
