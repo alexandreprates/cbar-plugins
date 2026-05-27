@@ -152,6 +152,38 @@
       "publisher_url": "https://github.com/AlexandrePrates"
     },
     {
+      "id": "network.vpn-status",
+      "name": "VPN Status",
+      "category": "network",
+      "description": "Shows VPN connection status with interface and copy actions.",
+      "path": "plugins/network/vpn-status.10s.sh",
+      "download_url": "https://raw.githubusercontent.com/alexandreprates/cbar-plugins/main/plugins/network/vpn-status.10s.sh",
+      "install_name": "vpn-status.10s.sh",
+      "interval": "10s",
+      "language": "bash",
+      "languages": [
+        "en"
+      ],
+      "dependencies": [
+        "awk",
+        "base64",
+        "cat",
+        "ip",
+        "nmcli",
+        "tr",
+        "wl-copy",
+        "xclip"
+      ],
+      "env": [
+        "CBAR_VPN_INTERFACE"
+      ],
+      "sha256": "5078e224f5983cf55ec819843b51c488dc72978c55f3ec2f1745f2b6347e7c60",
+      "size_bytes": 4242,
+      "license": "GPL-3.0-only",
+      "publisher": "AlexandrePrates",
+      "publisher_url": "https://github.com/AlexandrePrates"
+    },
+    {
       "id": "network.ping",
       "name": "Ping",
       "category": "network",
