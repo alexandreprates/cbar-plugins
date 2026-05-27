@@ -25,7 +25,7 @@ templates/       starter scripts for new plugin contributions
 - `plugins/system/memory-gauge.5s.sh` shows compact memory usage.
 - `plugins/system/disk.30s.sh` shows compact filesystem usage.
 - `plugins/network/public-ip.5m.sh` shows public and local IP status with copy actions.
-- `plugins/network/ping.10s.sh` checks connectivity to a configurable host.
+- `plugins/network/ping.10s.sh` shows compact latency to a configurable host.
 - `plugins/dev/docker-containers.10s.sh` summarizes Docker container state.
 - `plugins/dev/github-notifications.1m.sh` opens GitHub notifications and optionally shows a count when `gh` is authenticated.
 - `plugins/dev/openai_codex.5m.sh` displays OpenAI Codex usage limits from local Codex session metadata.

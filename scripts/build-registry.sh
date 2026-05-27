@@ -31,7 +31,7 @@ add_plugin "system.disk" "Disk" "system" "Shows filesystem usage as compact segm
 
 # network
 add_plugin "network.public-ip" "Public IP" "network" "Shows public and local IP status with copy actions." "plugins/network/public-ip.5m.sh" "5m" "bash" "en" "awk,base64,curl,ip,tr,wl-copy,xclip" "CBAR_PUBLIC_IP_URL" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
-add_plugin "network.ping" "Ping" "network" "Checks connectivity to a configurable host." "plugins/network/ping.10s.sh" "10s" "bash" "en" "ping" "CBAR_PING_HOST" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
+add_plugin "network.ping" "Ping" "network" "Shows compact latency to a configurable host." "plugins/network/ping.10s.sh" "10s" "bash" "en" "awk,ping" "CBAR_PING_HOST,CBAR_PING_WARN_MS,CBAR_PING_CRIT_MS" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
 
 # dev
 add_plugin "dev.docker-containers" "Docker Containers" "dev" "Summarizes Docker container state." "plugins/dev/docker-containers.10s.sh" "10s" "bash" "en" "docker" "" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"

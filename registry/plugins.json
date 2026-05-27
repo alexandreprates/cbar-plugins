@@ -124,7 +124,7 @@
       "id": "network.ping",
       "name": "Ping",
       "category": "network",
-      "description": "Checks connectivity to a configurable host.",
+      "description": "Shows compact latency to a configurable host.",
       "path": "plugins/network/ping.10s.sh",
       "download_url": "https://raw.githubusercontent.com/alexandreprates/cbar-plugins/main/plugins/network/ping.10s.sh",
       "install_name": "ping.10s.sh",
@@ -134,13 +134,16 @@
         "en"
       ],
       "dependencies": [
+        "awk",
         "ping"
       ],
       "env": [
-        "CBAR_PING_HOST"
+        "CBAR_PING_HOST",
+        "CBAR_PING_WARN_MS",
+        "CBAR_PING_CRIT_MS"
       ],
-      "sha256": "6e2f4c50e98633b42ca20d84776529a7481aa62600d67994c62b950ba0981557",
-      "size_bytes": 965,
+      "sha256": "21d1c88a2712eef678df93cb93aabeece650d9d2ab17b9ccc36db0c5e0ff4348",
+      "size_bytes": 1762,
       "license": "GPL-3.0-only",
       "publisher": "AlexandrePrates",
       "publisher_url": "https://github.com/AlexandrePrates"
