@@ -93,7 +93,7 @@
       "id": "network.public-ip",
       "name": "Public IP",
       "category": "network",
-      "description": "Shows the current public IP address.",
+      "description": "Shows public and local IP status with copy actions.",
       "path": "plugins/network/public-ip.5m.sh",
       "download_url": "https://raw.githubusercontent.com/alexandreprates/cbar-plugins/main/plugins/network/public-ip.5m.sh",
       "install_name": "public-ip.5m.sh",
@@ -103,15 +103,19 @@
         "en"
       ],
       "dependencies": [
+        "awk",
+        "base64",
         "curl",
+        "ip",
+        "tr",
         "wl-copy",
         "xclip"
       ],
       "env": [
         "CBAR_PUBLIC_IP_URL"
       ],
-      "sha256": "f2456db552dbd25893251c4aca16c956f69bc685008ae2176422c5b1b62e2ca1",
-      "size_bytes": 1022,
+      "sha256": "74efa149d7d4242c84f7e2f0ccfc1324f129d9855e01c888f348818e8a5113b9",
+      "size_bytes": 2236,
       "license": "GPL-3.0-only",
       "publisher": "AlexandrePrates",
       "publisher_url": "https://github.com/AlexandrePrates"

@@ -30,7 +30,7 @@ add_plugin "system.memory-gauge" "Memory Gauge" "system" "Shows RAM usage as a c
 add_plugin "system.disk" "Disk" "system" "Shows filesystem usage as compact segmented blocks." "plugins/system/disk.30s.sh" "30s" "bash" "en" "awk,base64,df,tr" "CBAR_DISK_PATH,CBAR_DISK_WARN,CBAR_DISK_CRIT" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
 
 # network
-add_plugin "network.public-ip" "Public IP" "network" "Shows the current public IP address." "plugins/network/public-ip.5m.sh" "5m" "bash" "en" "curl,wl-copy,xclip" "CBAR_PUBLIC_IP_URL" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
+add_plugin "network.public-ip" "Public IP" "network" "Shows public and local IP status with copy actions." "plugins/network/public-ip.5m.sh" "5m" "bash" "en" "awk,base64,curl,ip,tr,wl-copy,xclip" "CBAR_PUBLIC_IP_URL" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
 add_plugin "network.ping" "Ping" "network" "Checks connectivity to a configurable host." "plugins/network/ping.10s.sh" "10s" "bash" "en" "ping" "CBAR_PING_HOST" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
 
 # dev
