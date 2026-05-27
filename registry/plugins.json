@@ -63,7 +63,7 @@
       "id": "system.disk",
       "name": "Disk",
       "category": "system",
-      "description": "Shows root filesystem usage.",
+      "description": "Shows filesystem usage as compact segmented blocks.",
       "path": "plugins/system/disk.30s.sh",
       "download_url": "https://raw.githubusercontent.com/alexandreprates/cbar-plugins/main/plugins/system/disk.30s.sh",
       "install_name": "disk.30s.sh",
@@ -73,14 +73,18 @@
         "en"
       ],
       "dependencies": [
+        "awk",
+        "base64",
         "df",
-        "awk"
+        "tr"
       ],
       "env": [
-        "CBAR_DISK_PATH"
+        "CBAR_DISK_PATH",
+        "CBAR_DISK_WARN",
+        "CBAR_DISK_CRIT"
       ],
-      "sha256": "bdcdd242b245a1a88451204170ce3c102c22b76958e431027a0f4c4c5c3cda81",
-      "size_bytes": 639,
+      "sha256": "c953a17efc0702eafe5bcad2edb4aea0edcf2be0fcbe5a92aa4d4425d045ab83",
+      "size_bytes": 2053,
       "license": "GPL-3.0-only",
       "publisher": "AlexandrePrates",
       "publisher_url": "https://github.com/AlexandrePrates"

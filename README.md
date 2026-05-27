@@ -23,7 +23,7 @@ templates/       starter scripts for new plugin contributions
 
 - `plugins/system/cpu-chart.5s.sh` shows compact CPU usage history.
 - `plugins/system/memory-gauge.5s.sh` shows compact memory usage.
-- `plugins/system/disk.30s.sh` shows root filesystem usage.
+- `plugins/system/disk.30s.sh` shows compact filesystem usage.
 - `plugins/system/health.5s.sh` shows a compact local health summary.
 - `plugins/network/public-ip.5m.sh` shows the current public IP address.
 - `plugins/network/ping.10s.sh` checks connectivity to a configurable host.
