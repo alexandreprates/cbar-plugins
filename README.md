@@ -32,6 +32,7 @@ templates/       starter scripts for new plugin contributions
 - `plugins/network/ping.10s.sh` shows compact latency to a configurable host.
 - `plugins/dev/docker-health.10s.sh` shows Docker daemon and container health.
 - `plugins/dev/github-notifications.1m.sh` shows GitHub notification status with an unread badge.
+- `plugins/dev/kubernetes-context.30s.sh` shows Kubernetes context and namespace status.
 - `plugins/dev/openai_codex.5m.sh` displays OpenAI Codex usage limits from local Codex session metadata.
 - `plugins/productivity/timer.1s.sh` shows a compact animated hourglass countdown timer.
 
@@ -63,7 +64,6 @@ Then open a pull request from your fork. See [CONTRIBUTING.md](CONTRIBUTING.md),
 - Docker Compose project status.
 - GitHub pull request or issue shortcuts.
 - Clipboard history helper.
-- Kubernetes context indicator.
 - Git dirty watcher.
 - SSH tunnel or remote host status.
 

@@ -325,6 +325,36 @@
       "publisher_url": "https://github.com/AlexandrePrates"
     },
     {
+      "id": "dev.kubernetes-context",
+      "name": "Kubernetes Context",
+      "category": "dev",
+      "description": "Shows current Kubernetes context and namespace with production alerts.",
+      "path": "plugins/dev/kubernetes-context.30s.sh",
+      "download_url": "https://raw.githubusercontent.com/alexandreprates/cbar-plugins/main/plugins/dev/kubernetes-context.30s.sh",
+      "install_name": "kubernetes-context.30s.sh",
+      "interval": "30s",
+      "language": "bash",
+      "languages": [
+        "en"
+      ],
+      "dependencies": [
+        "base64",
+        "kubectl",
+        "python3",
+        "tr",
+        "wl-copy",
+        "xclip"
+      ],
+      "env": [
+        "CBAR_KUBE_PROD_PATTERN"
+      ],
+      "sha256": "25226ca8fd2156cf803a18524c79f4b8ddacc19da5f4fe01c962184bc2d9f9a8",
+      "size_bytes": 5194,
+      "license": "GPL-3.0-only",
+      "publisher": "AlexandrePrates",
+      "publisher_url": "https://github.com/AlexandrePrates"
+    },
+    {
       "id": "dev.openai-codex",
       "name": "OpenAI Codex Usage",
       "category": "dev",
