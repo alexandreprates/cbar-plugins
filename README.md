@@ -22,7 +22,6 @@ templates/       starter scripts for new plugin contributions
 ## Included Plugins
 
 - `plugins/system/cpu-chart.5s.sh` shows compact CPU usage history.
-- `plugins/system/memory.5s.sh` shows memory usage.
 - `plugins/system/memory-gauge.5s.sh` shows compact memory usage.
 - `plugins/system/disk.30s.sh` shows root filesystem usage.
 - `plugins/system/health.5s.sh` shows a compact local health summary.
@@ -75,8 +74,8 @@ Copy a plugin into your cbar plugin directory and make it executable:
 
 ```bash
 mkdir -p ~/.config/cbar/plugins
-cp plugins/system/memory.5s.sh ~/.config/cbar/plugins/
-chmod +x ~/.config/cbar/plugins/memory.5s.sh
+cp plugins/system/memory-gauge.5s.sh ~/.config/cbar/plugins/
+chmod +x ~/.config/cbar/plugins/memory-gauge.5s.sh
 ```
 
 Restart cbar or trigger a refresh after adding new files. Current cbar releases discover plugins at startup.

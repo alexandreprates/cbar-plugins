@@ -32,30 +32,6 @@
       "publisher_url": "https://github.com/AlexandrePrates"
     },
     {
-      "id": "system.memory",
-      "name": "Memory",
-      "category": "system",
-      "description": "Shows current memory usage.",
-      "path": "plugins/system/memory.5s.sh",
-      "download_url": "https://raw.githubusercontent.com/alexandreprates/cbar-plugins/main/plugins/system/memory.5s.sh",
-      "install_name": "memory.5s.sh",
-      "interval": "5s",
-      "language": "bash",
-      "languages": [
-        "en"
-      ],
-      "dependencies": [
-        "awk",
-        "free"
-      ],
-      "env": [],
-      "sha256": "c917f5f2d12816098eafc27e6032b2715671f6e883ee4314270fbd759f0bd91c",
-      "size_bytes": 588,
-      "license": "GPL-3.0-only",
-      "publisher": "AlexandrePrates",
-      "publisher_url": "https://github.com/AlexandrePrates"
-    },
-    {
       "id": "system.memory-gauge",
       "name": "Memory Gauge",
       "category": "system",
@@ -77,8 +53,8 @@
         "CBAR_MEMORY_WARN",
         "CBAR_MEMORY_CRIT"
       ],
-      "sha256": "cfd495919cbab674b481a71269206a9260135e43517774b6b13973a51793847e",
-      "size_bytes": 2310,
+      "sha256": "65de98d3be76dd5eccbc9fc65cfb2f331554bdc499070518423eef24421f5ec8",
+      "size_bytes": 2485,
       "license": "GPL-3.0-only",
       "publisher": "AlexandrePrates",
       "publisher_url": "https://github.com/AlexandrePrates"

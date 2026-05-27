@@ -26,7 +26,6 @@ add_plugin() {
 
 # system
 add_plugin "system.cpu-chart" "CPU Chart" "system" "Shows CPU usage history as a compact panel chart." "plugins/system/cpu-chart.5s.sh" "5s" "bash" "en" "awk,base64,mkdir,tr" "CBAR_CPU_WARN" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
-add_plugin "system.memory" "Memory" "system" "Shows current memory usage." "plugins/system/memory.5s.sh" "5s" "bash" "en" "awk,free" "" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
 add_plugin "system.memory-gauge" "Memory Gauge" "system" "Shows RAM usage as a compact panel gauge." "plugins/system/memory-gauge.5s.sh" "5s" "bash" "en" "awk,base64,tr" "CBAR_MEMORY_WARN,CBAR_MEMORY_CRIT" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
 add_plugin "system.disk" "Disk" "system" "Shows root filesystem usage." "plugins/system/disk.30s.sh" "30s" "bash" "en" "df,awk" "CBAR_DISK_PATH" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
 add_plugin "system.health" "System Health" "system" "Shows a compact local health summary." "plugins/system/health.5s.sh" "5s" "bash" "en" "awk,date,df" "CBAR_HEALTH_DISK_WARN" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
