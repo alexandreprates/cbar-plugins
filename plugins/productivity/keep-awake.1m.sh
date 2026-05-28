@@ -148,3 +148,4 @@ else
   echo "Ativar | bash=${action_file} refresh=true"
   echo "Status: inativo | disabled=true"
 fi
+echo "Refresh | refresh=true"

@@ -445,8 +445,8 @@
         "CBAR_AWAKE_WHAT",
         "CBAR_AWAKE_REASON"
       ],
-      "sha256": "ce2f40a9b16068144c9f29b68edd3aad3ccb012b94237c1bc622274c0cc7aca6",
-      "size_bytes": 3864,
+      "sha256": "27da498294388a9d5a430f46824e6781ae067f424b649697a175b1704415a09f",
+      "size_bytes": 3894,
       "license": "GPL-3.0-only",
       "publisher": "AlexandrePrates",
       "publisher_url": "https://github.com/AlexandrePrates"
