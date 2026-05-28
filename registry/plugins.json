@@ -418,6 +418,40 @@
       "publisher_url": "https://github.com/AlexandrePrates"
     },
     {
+      "id": "productivity.keep-awake",
+      "name": "Keep Awake",
+      "category": "productivity",
+      "description": "Keeps the current desktop session awake with a toggleable inhibitor.",
+      "path": "plugins/productivity/keep-awake.1m.sh",
+      "download_url": "https://raw.githubusercontent.com/alexandreprates/cbar-plugins/main/plugins/productivity/keep-awake.1m.sh",
+      "install_name": "keep-awake.1m.sh",
+      "interval": "1m",
+      "language": "bash",
+      "languages": [
+        "en"
+      ],
+      "dependencies": [
+        "base64",
+        "cat",
+        "chmod",
+        "date",
+        "grep",
+        "mkdir",
+        "rm",
+        "systemd-inhibit",
+        "tr"
+      ],
+      "env": [
+        "CBAR_AWAKE_WHAT",
+        "CBAR_AWAKE_REASON"
+      ],
+      "sha256": "ce2f40a9b16068144c9f29b68edd3aad3ccb012b94237c1bc622274c0cc7aca6",
+      "size_bytes": 3864,
+      "license": "GPL-3.0-only",
+      "publisher": "AlexandrePrates",
+      "publisher_url": "https://github.com/AlexandrePrates"
+    },
+    {
       "id": "productivity.timer",
       "name": "Timer",
       "category": "productivity",

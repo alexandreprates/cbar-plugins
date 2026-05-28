@@ -46,6 +46,7 @@ Developer:
 
 Productivity:
 
+- `plugins/productivity/keep-awake.1m.sh` keeps the current desktop session awake with a toggleable inhibitor.
 - `plugins/productivity/timer.1s.sh` shows an animated hourglass countdown timer.
 
 ## Installing A Plugin
