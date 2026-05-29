@@ -45,7 +45,7 @@ add_plugin "dev.kubernetes-context" "Kubernetes Context" "dev" "Shows current Ku
 add_plugin "dev.openai-codex" "OpenAI Codex Usage" "dev" "Displays OpenAI Codex usage limits from local Codex session metadata." "plugins/dev/openai_codex.5m.sh" "5m" "bash" "en" "python3,sed,tr" "CBAR_CODEX_SHOW_7D,CBAR_CODEX_COLORS,CBAR_CODEX_SHOW_RESET,CBAR_CODEX_SHOW_BARS" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
 
 # productivity
-add_plugin "productivity.keep-awake" "Keep Awake" "productivity" "Keeps the current desktop session awake with a toggleable inhibitor." "plugins/productivity/keep-awake.1m.sh" "1m" "bash" "en" "base64,cat,chmod,date,grep,mkdir,rm,systemd-inhibit,tr" "CBAR_AWAKE_WHAT,CBAR_AWAKE_REASON" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
+add_plugin "productivity.keep-awake" "Keep Awake" "productivity" "Keeps the current desktop session awake with a toggleable inhibitor." "plugins/productivity/keep-awake.1m.sh" "1m" "bash" "en" "base64,cat,chmod,date,grep,mkdir,pgrep,python3,rm,systemd-inhibit,tr" "CBAR_AWAKE_WHAT,CBAR_AWAKE_REASON" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
 add_plugin "productivity.timer" "Timer" "productivity" "Shows a compact animated hourglass countdown timer." "plugins/productivity/timer.1s.sh" "1s" "bash" "en" "base64,date,mkdir,rm,tr" "CBAR_TIMER_SECONDS" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
 
 REPO_ROOT="${repo_root}" RAW_BASE_URL="${raw_base_url}" REGISTRY_FILE="${registry_file}" python3 - "${plugins[@]}" <<'PY'

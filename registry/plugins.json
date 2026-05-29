@@ -437,6 +437,8 @@
         "date",
         "grep",
         "mkdir",
+        "pgrep",
+        "python3",
         "rm",
         "systemd-inhibit",
         "tr"
@@ -445,8 +447,8 @@
         "CBAR_AWAKE_WHAT",
         "CBAR_AWAKE_REASON"
       ],
-      "sha256": "27da498294388a9d5a430f46824e6781ae067f424b649697a175b1704415a09f",
-      "size_bytes": 3894,
+      "sha256": "9081e3c2e29f7c22fff7e4e18ea2faf0cf8bd7642ab9a64c8f913160e5a7fb2b",
+      "size_bytes": 6145,
       "license": "GPL-3.0-only",
       "publisher": "AlexandrePrates",
       "publisher_url": "https://github.com/AlexandrePrates"

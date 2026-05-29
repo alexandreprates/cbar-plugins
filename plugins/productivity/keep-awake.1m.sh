@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 # cbar: Keeps the current desktop session awake with a toggleable inhibitor.
-# deps: base64, cat, chmod, date, grep, mkdir, rm, systemd-inhibit, tr
+# deps: base64, cat, chmod, date, grep, mkdir, pgrep, python3, rm, systemd-inhibit, tr
 # env: CBAR_AWAKE_WHAT, CBAR_AWAKE_REASON
 
 set -u
 
 state_dir="${XDG_RUNTIME_DIR:-${XDG_CACHE_HOME:-${HOME}/.cache}/cbar}"
 state_file="${state_dir}/keep-awake.pid"
+helper_file="${state_dir}/keep-awake-helper.py"
 action_file="${XDG_RUNTIME_DIR:-${state_dir}}/ka"
 what="${CBAR_AWAKE_WHAT:-idle:sleep}"
 reason="${CBAR_AWAKE_REASON:-cbar keep awake}"
@@ -26,6 +27,45 @@ write_action_file() {
 exec "${script_path}" "\${1:-toggle}"
 EOF
   chmod +x "${action_file}" 2>/dev/null || true
+}
+
+write_helper_file() {
+  cat > "${helper_file}" <<'PY'
+#!/usr/bin/env python3
+import signal
+import sys
+import time
+
+cookie = None
+interface = None
+
+try:
+    import dbus
+
+    bus = dbus.SessionBus()
+    proxy = bus.get_object("org.freedesktop.ScreenSaver", "/org/freedesktop/ScreenSaver")
+    interface = dbus.Interface(proxy, "org.freedesktop.ScreenSaver")
+    reason = sys.argv[1] if len(sys.argv) > 1 else "cbar keep awake"
+    cookie = interface.Inhibit("cbar-keep-awake", reason)
+except Exception:
+    cookie = None
+    interface = None
+
+def cleanup(_signum=None, _frame=None):
+    if interface is not None and cookie is not None:
+        try:
+            interface.UnInhibit(cookie)
+        except Exception:
+            pass
+    raise SystemExit(0)
+
+signal.signal(signal.SIGTERM, cleanup)
+signal.signal(signal.SIGINT, cleanup)
+
+while True:
+    time.sleep(3600)
+PY
+  chmod +x "${helper_file}" 2>/dev/null || true
 }
 
 coffee_image() {
@@ -48,6 +88,11 @@ coffee_image() {
   <path d="M4 17.5h11" fill="none" stroke="${stroke}" stroke-width="1.4" stroke-linecap="round"/>
 </svg>
 SVG
+}
+
+find_existing_pid() {
+  command -v pgrep >/dev/null 2>&1 || return 0
+  pgrep -u "$(id -u)" -f 'systemd-inhibit .*--who=cbar-keep-awake' 2>/dev/null | head -n 1
 }
 
 pid_is_running() {
@@ -74,7 +119,8 @@ start_awake() {
     return 0
   fi
 
-  nohup systemd-inhibit --what="${what}" --who=cbar-keep-awake --why="${reason}" --mode=block sleep infinity >/dev/null 2>&1 &
+  write_helper_file
+  nohup systemd-inhibit --what="${what}" --who=cbar-keep-awake --why="${reason}" --mode=block python3 "${helper_file}" "${reason}" >/dev/null 2>&1 &
   printf '%s\n' "$!" > "${state_file}"
 }
 
@@ -89,6 +135,14 @@ stop_awake() {
     kill "${current_pid}" 2>/dev/null || true
   fi
 
+  if command -v pgrep >/dev/null 2>&1; then
+    while read -r existing_pid; do
+      [[ "${existing_pid}" =~ ^[0-9]+$ ]] || continue
+      [[ "${existing_pid}" = "${current_pid}" ]] && continue
+      kill "${existing_pid}" 2>/dev/null || true
+    done < <(pgrep -u "$(id -u)" -f 'systemd-inhibit .*--who=cbar-keep-awake' 2>/dev/null || true)
+  fi
+
   rm -f "${state_file}" 2>/dev/null || true
 }
 
@@ -101,12 +155,26 @@ running=false
 if pid_is_running "${pid}"; then
   running=true
 elif [[ -f "${state_file}" ]]; then
-  rm -f "${state_file}" 2>/dev/null || true
+  existing_pid="$(find_existing_pid)"
+  if pid_is_running "${existing_pid}"; then
+    pid="${existing_pid}"
+    printf '%s\n' "${pid}" > "${state_file}" 2>/dev/null || true
+    running=true
+  else
+    rm -f "${state_file}" 2>/dev/null || true
+  fi
+else
+  existing_pid="$(find_existing_pid)"
+  if pid_is_running "${existing_pid}"; then
+    pid="${existing_pid}"
+    printf '%s\n' "${pid}" > "${state_file}" 2>/dev/null || true
+    running=true
+  fi
 fi
 
 case "${1:-}" in
   start)
-    command -v systemd-inhibit >/dev/null 2>&1 && start_awake
+    command -v systemd-inhibit >/dev/null 2>&1 && command -v python3 >/dev/null 2>&1 && start_awake
     exit 0
     ;;
   stop)
@@ -116,7 +184,7 @@ case "${1:-}" in
   toggle)
     if [[ "${running}" = "true" ]]; then
       stop_awake
-    elif command -v systemd-inhibit >/dev/null 2>&1; then
+    elif command -v systemd-inhibit >/dev/null 2>&1 && command -v python3 >/dev/null 2>&1; then
       start_awake
     fi
     exit 0
@@ -127,6 +195,15 @@ if ! command -v systemd-inhibit >/dev/null 2>&1; then
   echo "| image=$(coffee_image false)"
   echo "---"
   echo "systemd-inhibit is not installed | disabled=true"
+  echo "Updated: ${now} | disabled=true"
+  echo "Refresh | refresh=true"
+  exit 0
+fi
+
+if ! command -v python3 >/dev/null 2>&1; then
+  echo "| image=$(coffee_image false)"
+  echo "---"
+  echo "python3 is not installed | disabled=true"
   echo "Updated: ${now} | disabled=true"
   echo "Refresh | refresh=true"
   exit 0
