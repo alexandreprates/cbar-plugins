@@ -111,7 +111,13 @@ After changing plugin files or metadata, rebuild the catalog:
 ./scripts/build-registry.sh
 ```
 
-The registry includes plugin metadata, output language badges, download URLs, file sizes, and SHA-256 checksums used by cbar before installing a plugin.
+The registry includes plugin metadata, plugin versions, output language badges, download URLs, file sizes, and SHA-256 checksums used by cbar before installing or updating a plugin.
+
+Each plugin has its own `plugin_version` using Semantic Versioning:
+
+- bump `PATCH` for bug fixes and small internal corrections
+- bump `MINOR` for backward-compatible behavior, output, or configuration additions
+- bump `MAJOR` when a plugin change may break existing user expectations, environment configuration, or local workflows
 
 ## Inspiration
 

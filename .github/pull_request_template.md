@@ -5,6 +5,7 @@
 ## Plugin Changes
 
 - Plugin path/category:
+- Plugin version:
 - New dependencies:
 - New environment variables:
 - Output languages:
@@ -19,6 +20,7 @@
 - [ ] No secrets, tokens, private hosts, or personal paths are hardcoded.
 - [ ] Remote calls are necessary for the plugin's purpose and fail predictably.
 - [ ] Optional dependencies are checked or documented.
+- [ ] Plugin version is listed in registry metadata and was bumped for existing plugin changes.
 - [ ] Output languages are listed in registry metadata when the plugin displays human-facing text.
 - [ ] Publisher metadata identifies the GitHub user responsible for this plugin.
 - [ ] Missing dependencies produce useful output or a clear failure.

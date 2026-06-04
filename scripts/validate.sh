@@ -46,6 +46,32 @@ if missing:
     raise SystemExit(f"missing output language metadata: {', '.join(missing)}")
 PY
 
+printf 'checking plugin version metadata...\n'
+python3 - <<'PY'
+import json
+import re
+from pathlib import Path
+
+SEMVER_RE = re.compile(
+    r"^(0|[1-9]\d*)\."
+    r"(0|[1-9]\d*)\."
+    r"(0|[1-9]\d*)"
+    r"(?:-((?:0|[1-9]\d*|\d*[A-Za-z-][0-9A-Za-z-]*)"
+    r"(?:\.(?:0|[1-9]\d*|\d*[A-Za-z-][0-9A-Za-z-]*))*))?"
+    r"(?:\+([0-9A-Za-z-]+(?:\.[0-9A-Za-z-]+)*))?$"
+)
+
+registry = json.loads(Path("registry/plugins.json").read_text())
+invalid = [
+    plugin["id"]
+    for plugin in registry["plugins"]
+    if not plugin.get("plugin_version")
+    or not SEMVER_RE.fullmatch(plugin["plugin_version"])
+]
+if invalid:
+    raise SystemExit(f"missing or invalid plugin version metadata: {', '.join(invalid)}")
+PY
+
 printf 'checking registry freshness...\n'
 git diff --exit-code -- registry/plugins.json
 
