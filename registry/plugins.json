@@ -256,7 +256,7 @@
       "name": "SSH Hosts",
       "category": "network",
       "description": "Shows configured SSH host reachability with compact status.",
-      "plugin_version": "1.1.0",
+      "plugin_version": "1.2.0",
       "path": "plugins/network/ssh-hosts.30s.sh",
       "download_url": "https://raw.githubusercontent.com/alexandreprates/cbar-plugins/main/plugins/network/ssh-hosts.30s.sh",
       "install_name": "ssh-hosts.30s.sh",
