@@ -61,6 +61,24 @@ chmod +x ~/.config/cbar/plugins/memory-gauge.5s.sh
 
 Restart cbar or trigger a refresh after adding new files. Current cbar releases discover plugins at startup.
 
+## Plugin Configuration
+
+Plugins that support user-specific environment variables expect those values in cbar's central env file:
+
+```text
+~/.config/cbar/env
+```
+
+Use simple `KEY=value` assignments, such as:
+
+```bash
+CBAR_PING_HOST="1.1.1.1"
+CBAR_SSH_HOSTS="server,user@host"
+CBAR_NETWORK_INTERFACE="wlan0"
+```
+
+Catalog plugins that declare `# env:` variables include an `Edit cbar env` popup action. The action creates the file when needed and opens it with COSMIC's editor, falling back to the desktop opener when `cosmic-edit` is unavailable.
+
 ## Plugin Design
 
 Catalog plugins should be small, readable shell scripts with a narrow purpose. Prefer compact icons, gauges, badges, and mini charts in the panel; put labels, values, diagnostics, links, and shell actions in the popup menu.

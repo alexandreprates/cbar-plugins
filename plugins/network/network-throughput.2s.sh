@@ -5,6 +5,10 @@
 
 set -u
 
+edit_cbar_env_item() {
+  echo "Edit cbar env | bash=/bin/bash param1=-lc param2='mkdir -p \"\$HOME/.config/cbar\" && touch \"\$HOME/.config/cbar/env\" && if command -v cosmic-edit >/dev/null 2>&1; then cosmic-edit \"\$HOME/.config/cbar/env\" >/dev/null 2>&1 & elif command -v xdg-open >/dev/null 2>&1; then xdg-open \"\$HOME/.config/cbar/env\" >/dev/null 2>&1 & fi'"
+}
+
 state_dir="${XDG_RUNTIME_DIR:-${XDG_CACHE_HOME:-${HOME}/.cache}/cbar}"
 state_file="${state_dir}/network-throughput"
 iface="${CBAR_NETWORK_INTERFACE:-}"
@@ -152,8 +156,10 @@ if [[ -z "${selected_iface}" || ! -r "/sys/class/net/${selected_iface}/statistic
   echo "---"
   echo "Network throughput"
   echo "--Status: no interface found | disabled=true"
-  echo "--Set CBAR_NETWORK_INTERFACE to choose one | disabled=true"
+  echo "--Set CBAR_NETWORK_INTERFACE in ~/.config/cbar/env to choose one | disabled=true"
   echo "Refresh | refresh=true"
+  echo "---"
+  edit_cbar_env_item
   exit 0
 fi
 
@@ -206,3 +212,5 @@ echo "--Upload: $(format_rate "${tx_rate}") | disabled=true"
 echo "--Downloaded: $(format_bytes "${rx_bytes}") | disabled=true"
 echo "--Uploaded: $(format_bytes "${tx_bytes}") | disabled=true"
 echo "Refresh | refresh=true"
+echo "---"
+edit_cbar_env_item

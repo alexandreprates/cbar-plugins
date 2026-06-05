@@ -39,7 +39,7 @@ Each plugin should start with a short metadata block:
 # env: none
 ```
 
-Use `env: VARIABLE_NAME` when a plugin supports optional or required environment variables.
+Use `env: VARIABLE_NAME` when a plugin supports optional or required environment variables. User-facing configuration must be documented as values in `~/.config/cbar/env`, not as ad hoc exports in shell actions or setup notes.
 
 ## Templates
 
@@ -52,7 +52,8 @@ Copy a template into the closest `plugins/<category>/` directory and rename it f
 ## Safety
 
 - Do not hardcode secrets, tokens, private hosts, or personal paths.
-- Read credentials and user-specific values from environment variables.
+- Read credentials and user-specific values from environment variables loaded from `~/.config/cbar/env`.
+- Include an `Edit cbar env` menu item for plugins that declare `# env:` variables. The action should create the file if needed and open it with `cosmic-edit`, falling back to `xdg-open`.
 - Never print secret values into panel or popup output.
 - Avoid unnecessary remote calls.
 - Shell actions should be explicit, predictable, and easy to inspect.
@@ -132,6 +133,7 @@ git diff -- registry/plugins.json
 - The script output follows the cbar plugin format.
 - Dependencies and environment variables are documented in the header.
 - Dependencies and environment variables are reflected in registry metadata.
+- Configurable plugins expose an `Edit cbar env` popup action.
 - Plugin version is reflected in registry metadata and was bumped when changing an existing plugin.
 - Output languages are reflected in registry metadata when the plugin displays human-facing text.
 - Publisher metadata is present and points to the contributor's GitHub identity.

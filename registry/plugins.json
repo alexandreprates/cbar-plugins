@@ -8,7 +8,7 @@
       "name": "CPU Chart",
       "category": "system",
       "description": "Shows CPU usage history as a compact panel chart.",
-      "plugin_version": "1.0.0",
+      "plugin_version": "1.1.0",
       "path": "plugins/system/cpu-chart.5s.sh",
       "download_url": "https://raw.githubusercontent.com/alexandreprates/cbar-plugins/main/plugins/system/cpu-chart.5s.sh",
       "install_name": "cpu-chart.5s.sh",
@@ -26,8 +26,8 @@
       "env": [
         "CBAR_CPU_WARN"
       ],
-      "sha256": "18c90fa539ad83b27fddab8642d30f474eb340bdc5e4953114363decac1b5f94",
-      "size_bytes": 2851,
+      "sha256": "4a8aa503219e0f05b7b10e019c1f543ede46ea8277bb7c23ea536e3d470ddb2f",
+      "size_bytes": 3251,
       "license": "GPL-3.0-only",
       "publisher": "AlexandrePrates",
       "publisher_url": "https://github.com/AlexandrePrates"
@@ -37,7 +37,7 @@
       "name": "Memory Gauge",
       "category": "system",
       "description": "Shows RAM usage as a compact panel gauge.",
-      "plugin_version": "1.0.0",
+      "plugin_version": "1.1.0",
       "path": "plugins/system/memory-gauge.5s.sh",
       "download_url": "https://raw.githubusercontent.com/alexandreprates/cbar-plugins/main/plugins/system/memory-gauge.5s.sh",
       "install_name": "memory-gauge.5s.sh",
@@ -55,8 +55,8 @@
         "CBAR_MEMORY_WARN",
         "CBAR_MEMORY_CRIT"
       ],
-      "sha256": "65de98d3be76dd5eccbc9fc65cfb2f331554bdc499070518423eef24421f5ec8",
-      "size_bytes": 2485,
+      "sha256": "590e59ff14ad974df13c5efdf46a2fb206016b2b384a2559c68375c1b7daa6ee",
+      "size_bytes": 2885,
       "license": "GPL-3.0-only",
       "publisher": "AlexandrePrates",
       "publisher_url": "https://github.com/AlexandrePrates"
@@ -66,7 +66,7 @@
       "name": "Disk",
       "category": "system",
       "description": "Shows filesystem usage as compact segmented blocks.",
-      "plugin_version": "1.0.0",
+      "plugin_version": "1.1.0",
       "path": "plugins/system/disk.30s.sh",
       "download_url": "https://raw.githubusercontent.com/alexandreprates/cbar-plugins/main/plugins/system/disk.30s.sh",
       "install_name": "disk.30s.sh",
@@ -86,8 +86,8 @@
         "CBAR_DISK_WARN",
         "CBAR_DISK_CRIT"
       ],
-      "sha256": "c953a17efc0702eafe5bcad2edb4aea0edcf2be0fcbe5a92aa4d4425d045ab83",
-      "size_bytes": 2053,
+      "sha256": "4db009f433bba01bb9d404b50be01438849e218eb6f2a05d436e84d5142ff314",
+      "size_bytes": 2453,
       "license": "GPL-3.0-only",
       "publisher": "AlexandrePrates",
       "publisher_url": "https://github.com/AlexandrePrates"
@@ -97,7 +97,7 @@
       "name": "Service Status",
       "category": "system",
       "description": "Shows systemd service health with compact status and actions.",
-      "plugin_version": "1.0.0",
+      "plugin_version": "1.1.0",
       "path": "plugins/system/service-status.30s.sh",
       "download_url": "https://raw.githubusercontent.com/alexandreprates/cbar-plugins/main/plugins/system/service-status.30s.sh",
       "install_name": "service-status.30s.sh",
@@ -116,8 +116,8 @@
       "env": [
         "CBAR_SERVICE_UNITS"
       ],
-      "sha256": "c430d8c3ee31b59e8298d526fa07df992d50a6b6c12afcd03a164863ecc11d4c",
-      "size_bytes": 6529,
+      "sha256": "94a73553553b5908700eeb209ac6ceaeccc187da651bc24fdf5ad906805e6e55",
+      "size_bytes": 6951,
       "license": "GPL-3.0-only",
       "publisher": "AlexandrePrates",
       "publisher_url": "https://github.com/AlexandrePrates"
@@ -127,7 +127,7 @@
       "name": "Updates Available",
       "category": "system",
       "description": "Shows available APT and Flatpak updates with a compact badge.",
-      "plugin_version": "1.0.0",
+      "plugin_version": "1.1.0",
       "path": "plugins/system/updates-available.30m.sh",
       "download_url": "https://raw.githubusercontent.com/alexandreprates/cbar-plugins/main/plugins/system/updates-available.30m.sh",
       "install_name": "updates-available.30m.sh",
@@ -148,8 +148,8 @@
         "CBAR_UPDATES_INCLUDE_APT",
         "CBAR_UPDATES_INCLUDE_FLATPAK"
       ],
-      "sha256": "bafab1eb7d3524a687370b985ad5446a8b056de81eab807d9725f71d1049835d",
-      "size_bytes": 3908,
+      "sha256": "790265142b5bf650884231a7a02aa6917adbc4db62206eaef9dd64b95bddabd8",
+      "size_bytes": 4308,
       "license": "GPL-3.0-only",
       "publisher": "AlexandrePrates",
       "publisher_url": "https://github.com/AlexandrePrates"
@@ -159,7 +159,7 @@
       "name": "Public IP",
       "category": "network",
       "description": "Shows public and local IP status with copy actions.",
-      "plugin_version": "1.0.0",
+      "plugin_version": "1.1.0",
       "path": "plugins/network/public-ip.5m.sh",
       "download_url": "https://raw.githubusercontent.com/alexandreprates/cbar-plugins/main/plugins/network/public-ip.5m.sh",
       "install_name": "public-ip.5m.sh",
@@ -180,8 +180,8 @@
       "env": [
         "CBAR_PUBLIC_IP_URL"
       ],
-      "sha256": "74efa149d7d4242c84f7e2f0ccfc1324f129d9855e01c888f348818e8a5113b9",
-      "size_bytes": 2236,
+      "sha256": "f81f89c92939571cf4244f5087b0d386067377825a43f53f728969a2cce90c38",
+      "size_bytes": 2704,
       "license": "GPL-3.0-only",
       "publisher": "AlexandrePrates",
       "publisher_url": "https://github.com/AlexandrePrates"
@@ -191,7 +191,7 @@
       "name": "Network Throughput",
       "category": "network",
       "description": "Shows upload and download throughput as a compact panel chart.",
-      "plugin_version": "1.0.0",
+      "plugin_version": "1.1.0",
       "path": "plugins/network/network-throughput.2s.sh",
       "download_url": "https://raw.githubusercontent.com/alexandreprates/cbar-plugins/main/plugins/network/network-throughput.2s.sh",
       "install_name": "network-throughput.2s.sh",
@@ -212,8 +212,8 @@
       "env": [
         "CBAR_NETWORK_INTERFACE"
       ],
-      "sha256": "d61495fed37fa142fc298b4377130dbc62b120a3e8acdc8fcd12560f4a78fde0",
-      "size_bytes": 6457,
+      "sha256": "424dc6411f69e97761ad11660b759a53ab96fb2706804d4e942565f47a5cc696",
+      "size_bytes": 6913,
       "license": "GPL-3.0-only",
       "publisher": "AlexandrePrates",
       "publisher_url": "https://github.com/AlexandrePrates"
@@ -223,7 +223,7 @@
       "name": "VPN Status",
       "category": "network",
       "description": "Shows VPN connection status with interface and copy actions.",
-      "plugin_version": "1.0.0",
+      "plugin_version": "1.1.0",
       "path": "plugins/network/vpn-status.10s.sh",
       "download_url": "https://raw.githubusercontent.com/alexandreprates/cbar-plugins/main/plugins/network/vpn-status.10s.sh",
       "install_name": "vpn-status.10s.sh",
@@ -245,8 +245,8 @@
       "env": [
         "CBAR_VPN_INTERFACE"
       ],
-      "sha256": "5078e224f5983cf55ec819843b51c488dc72978c55f3ec2f1745f2b6347e7c60",
-      "size_bytes": 4242,
+      "sha256": "2d761b18c882d861984e1d9699e7796e7816c12179820cf9978a134ba2679859",
+      "size_bytes": 4664,
       "license": "GPL-3.0-only",
       "publisher": "AlexandrePrates",
       "publisher_url": "https://github.com/AlexandrePrates"
@@ -256,7 +256,7 @@
       "name": "SSH Hosts",
       "category": "network",
       "description": "Shows configured SSH host reachability with compact status.",
-      "plugin_version": "1.0.0",
+      "plugin_version": "1.1.0",
       "path": "plugins/network/ssh-hosts.30s.sh",
       "download_url": "https://raw.githubusercontent.com/alexandreprates/cbar-plugins/main/plugins/network/ssh-hosts.30s.sh",
       "install_name": "ssh-hosts.30s.sh",
@@ -279,8 +279,8 @@
         "CBAR_SSH_WARN_MS",
         "CBAR_SSH_TIMEOUT"
       ],
-      "sha256": "e88c8ca6abd7574720c3999dccf60e823564aedbf26261694b014dcf4c0a55a7",
-      "size_bytes": 4581,
+      "sha256": "a02a3cf6e35fee418a9a3d14865d81853da72589e16a3b8ff0f1f6aad089f371",
+      "size_bytes": 5048,
       "license": "GPL-3.0-only",
       "publisher": "AlexandrePrates",
       "publisher_url": "https://github.com/AlexandrePrates"
@@ -290,7 +290,7 @@
       "name": "Ping",
       "category": "network",
       "description": "Shows compact latency to a configurable host.",
-      "plugin_version": "1.0.0",
+      "plugin_version": "1.1.0",
       "path": "plugins/network/ping.10s.sh",
       "download_url": "https://raw.githubusercontent.com/alexandreprates/cbar-plugins/main/plugins/network/ping.10s.sh",
       "install_name": "ping.10s.sh",
@@ -308,8 +308,8 @@
         "CBAR_PING_WARN_MS",
         "CBAR_PING_CRIT_MS"
       ],
-      "sha256": "21d1c88a2712eef678df93cb93aabeece650d9d2ab17b9ccc36db0c5e0ff4348",
-      "size_bytes": 1762,
+      "sha256": "6cc3597c2b2a7ecaac95eeb471ae01c1c914e377b1aa5ca104dc02bbfea3a2c5",
+      "size_bytes": 2230,
       "license": "GPL-3.0-only",
       "publisher": "AlexandrePrates",
       "publisher_url": "https://github.com/AlexandrePrates"
@@ -374,7 +374,7 @@
       "name": "Kubernetes Context",
       "category": "dev",
       "description": "Shows current Kubernetes context and namespace with production alerts.",
-      "plugin_version": "1.0.0",
+      "plugin_version": "1.1.0",
       "path": "plugins/dev/kubernetes-context.30s.sh",
       "download_url": "https://raw.githubusercontent.com/alexandreprates/cbar-plugins/main/plugins/dev/kubernetes-context.30s.sh",
       "install_name": "kubernetes-context.30s.sh",
@@ -394,8 +394,8 @@
       "env": [
         "CBAR_KUBE_PROD_PATTERN"
       ],
-      "sha256": "25226ca8fd2156cf803a18524c79f4b8ddacc19da5f4fe01c962184bc2d9f9a8",
-      "size_bytes": 5194,
+      "sha256": "39634e72512e0eea135b02357d2527ed09cae6fbc774c8e7a95e6376ab312cbf",
+      "size_bytes": 5728,
       "license": "GPL-3.0-only",
       "publisher": "AlexandrePrates",
       "publisher_url": "https://github.com/AlexandrePrates"
@@ -405,7 +405,7 @@
       "name": "OpenAI Codex Usage",
       "category": "dev",
       "description": "Displays OpenAI Codex usage limits from local Codex session metadata.",
-      "plugin_version": "1.0.0",
+      "plugin_version": "1.1.0",
       "path": "plugins/dev/openai_codex.5m.sh",
       "download_url": "https://raw.githubusercontent.com/alexandreprates/cbar-plugins/main/plugins/dev/openai_codex.5m.sh",
       "install_name": "openai_codex.5m.sh",
@@ -425,8 +425,8 @@
         "CBAR_CODEX_SHOW_RESET",
         "CBAR_CODEX_SHOW_BARS"
       ],
-      "sha256": "f68ae39f0aa183c6053497fcaae7c5a33fb282581b78ace4854e3da6af515440",
-      "size_bytes": 12798,
+      "sha256": "9dc6f90bf394c5d578cd11e494f6f2c57e1cf3553c8ed5786114bfd8bb2e9435",
+      "size_bytes": 13208,
       "license": "GPL-3.0-only",
       "publisher": "AlexandrePrates",
       "publisher_url": "https://github.com/AlexandrePrates"
@@ -436,7 +436,7 @@
       "name": "Keep Awake",
       "category": "productivity",
       "description": "Keeps the current desktop session awake with a toggleable inhibitor.",
-      "plugin_version": "1.0.0",
+      "plugin_version": "1.1.0",
       "path": "plugins/productivity/keep-awake.1m.sh",
       "download_url": "https://raw.githubusercontent.com/alexandreprates/cbar-plugins/main/plugins/productivity/keep-awake.1m.sh",
       "install_name": "keep-awake.1m.sh",
@@ -462,8 +462,8 @@
         "CBAR_AWAKE_WHAT",
         "CBAR_AWAKE_REASON"
       ],
-      "sha256": "9081e3c2e29f7c22fff7e4e18ea2faf0cf8bd7642ab9a64c8f913160e5a7fb2b",
-      "size_bytes": 6145,
+      "sha256": "fdb779fd57ba7ff5c509d4d9add30532646e89d3bbc1aede82c12c09e62c11a4",
+      "size_bytes": 6613,
       "license": "GPL-3.0-only",
       "publisher": "AlexandrePrates",
       "publisher_url": "https://github.com/AlexandrePrates"
@@ -473,7 +473,7 @@
       "name": "Timer",
       "category": "productivity",
       "description": "Shows a compact animated hourglass countdown timer.",
-      "plugin_version": "1.0.0",
+      "plugin_version": "1.1.0",
       "path": "plugins/productivity/timer.1s.sh",
       "download_url": "https://raw.githubusercontent.com/alexandreprates/cbar-plugins/main/plugins/productivity/timer.1s.sh",
       "install_name": "timer.1s.sh",
@@ -492,8 +492,8 @@
       "env": [
         "CBAR_TIMER_SECONDS"
       ],
-      "sha256": "bfc4ea312f2451eadcf9dfc48189e917e3477f76f77feebb923193e6cbc875e1",
-      "size_bytes": 4330,
+      "sha256": "c9e387376cb72f43bde082e0402cc6a4fb0d21b96556a67c2c7d0ff8f3466043",
+      "size_bytes": 4730,
       "license": "GPL-3.0-only",
       "publisher": "AlexandrePrates",
       "publisher_url": "https://github.com/AlexandrePrates"

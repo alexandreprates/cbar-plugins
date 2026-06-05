@@ -10,6 +10,10 @@ SHOW_BARS="${CBAR_CODEX_SHOW_BARS:-${VAR_SHOW_BARS:-true}}"
 
 CODEX_ICON="iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAeGVYSWZNTQAqAAAACAAEARoABQAAAAEAAAA+ARsABQAAAAEAAABGASgAAwAAAAEAAgAAh2kABAAAAAEAAABOAAAAAAAAAJAAAAABAAAAkAAAAAEAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAEqADAAQAAAABAAAAEgAAAABIJAr0AAAACXBIWXMAABYlAAAWJQFJUiTwAAADc0lEQVQ4EW2UW2hcVRSGv73PZWaEkqQ3xGjQTm1orFqh3mNRkajtg9AqqDG+9KKRoogP9kUd8aUPgo2CYhovL9I+aEGoaBWlqUV9iLZIUIvGVqmRCkmqtc7lzDnbf5+ZVCrdcObsM2utf631r39vw/nW9lNdlOIBCDfh0lswRGAOYswYWe0jKh2z/w8z5/xRcSGmvgVjn8AEvbgMsmbLxYbCkrvLfsaxExe9RsW0jTKdBar8uRBTHCWIN5Kl0EggaFv1iW3vQxUXyJA03oXaI/PVtYC2uoiLqruJSxtp1DAOBq8KuPUyS105D/6SMfmHo9Z0TM3I6KMKRSWr72V68n5G1yStPN31R4laINQFcnVA72LDM580+XHWsb0/4L6Vlqf7Q56/PST2UUpIWNjAhSs3+1oNnthi4Qg26iFJWN9rGb42ZPiDhKduDPnttGPf0ZRVSy2fHcsYvi5gSuC7j6jfgtpMG1NQXxNSKqzLQcTJOoEMqZqZqqOnw+DUgg8auTviwPGMgeUhM/84+pbKoA5JPY+FMhl3Wpzboicnc0NfQGW8yWxVNIqbtT2WFYvgpzmHVezIlymn1fqlnYZYxeTLT9bZzX6m/fmI5Riq91NqvUM83nCxZe/3KTv2p9gFKfsfiulbYnhJYA1nGVhh2fedQEI/UtfvaVN9QtH3VycyHlZrL37R5OZLDFeohSULTQ564i/HW+LltmWWw9MZ5a52e3mPRAIyh7DShXZ7JjPuEU/bRPZOZZ5QwKebYgavbAmqoQICxd9Rtnx7skUHXqi4QxaTjUnJebupHL1exg6nDK4O6FtsefLDhPd/SKlKQ15TQ9LXyb8d45pgLlivdmN2GSpznVCcIIjK1BO23RTQvcDw5jcpXSXDenERyvdlVTh0jeX3M/DO1+LBk231kyW/UiuulovWs2eGiS94laaYVsUPKuv13YaSEJYvMrwt0Mv1zmR84UCKistpJdJUmvXHea74Sgto64SOyKo9xFKqV+zZowhlTcpP0AtzXFrySsmPSOyPSPU9pksPMGqSFpCvyh9aiq8TxfeSqvRMw/RLVOSP9/ScB2rHaNPUOUM3RftK+Q9IPvhrhPpjWH+N2GV5+nOuEQ3FpUd1lYzgCrvOf414oPnlq7PFuwSkA+nWippEVXyu/RtUqx+zo3Nu3nX+/S9FI1GiDAig5wAAAABJRU5ErkJggg=="
 
+edit_cbar_env_item() {
+  echo "Edit cbar env | bash=/bin/bash param1=-lc param2='mkdir -p \"\$HOME/.config/cbar\" && touch \"\$HOME/.config/cbar/env\" && if command -v cosmic-edit >/dev/null 2>&1; then cosmic-edit \"\$HOME/.config/cbar/env\" >/dev/null 2>&1 & elif command -v xdg-open >/dev/null 2>&1; then xdg-open \"\$HOME/.config/cbar/env\" >/dev/null 2>&1 & fi'"
+}
+
 show_error() {
   local message="$1"
   echo "! | image=${CODEX_ICON}"
@@ -17,6 +21,7 @@ show_error() {
   echo "${message}"
   echo "---"
   echo "Refresh | refresh=true"
+  edit_cbar_env_item
   echo "Open Codex Docs | href=https://developers.openai.com/codex"
   exit 0
 }
@@ -373,3 +378,4 @@ fi
 
 echo "---"
 echo "Refresh | refresh=true"
+edit_cbar_env_item

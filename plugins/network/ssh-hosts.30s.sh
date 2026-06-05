@@ -5,6 +5,10 @@
 
 set -u
 
+edit_cbar_env_item() {
+  echo "Edit cbar env | bash=/bin/bash param1=-lc param2='mkdir -p \"\$HOME/.config/cbar\" && touch \"\$HOME/.config/cbar/env\" && if command -v cosmic-edit >/dev/null 2>&1; then cosmic-edit \"\$HOME/.config/cbar/env\" >/dev/null 2>&1 & elif command -v xdg-open >/dev/null 2>&1; then xdg-open \"\$HOME/.config/cbar/env\" >/dev/null 2>&1 & fi'"
+}
+
 hosts_csv="${CBAR_SSH_HOSTS:-}"
 warn_ms="${CBAR_SSH_WARN_MS:-750}"
 timeout="${CBAR_SSH_TIMEOUT:-3}"
@@ -88,6 +92,8 @@ if ! command -v ssh >/dev/null 2>&1; then
   echo "---"
   echo "SSH hosts"
   echo "--Missing dependency: ssh | disabled=true"
+  echo "---"
+  edit_cbar_env_item
   exit 0
 fi
 
@@ -96,8 +102,10 @@ if [[ -z "${hosts_csv}" ]]; then
   echo "---"
   echo "SSH hosts"
   echo "--No hosts configured | disabled=true"
-  echo "--Set CBAR_SSH_HOSTS=user@host,server-alias | disabled=true"
+  echo "--Set CBAR_SSH_HOSTS in ~/.config/cbar/env | disabled=true"
   echo "Refresh | refresh=true"
+  echo "---"
+  edit_cbar_env_item
   exit 0
 fi
 
@@ -176,3 +184,5 @@ else
   echo "Open SSH | disabled=true"
 fi
 echo "Refresh | refresh=true"
+echo "---"
+edit_cbar_env_item

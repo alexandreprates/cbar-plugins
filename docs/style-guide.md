@@ -21,9 +21,11 @@ Plugins should be easy to audit, copy, modify, and remove. Prefer boring shell o
 
 ## Environment Variables
 
-- Use environment variables for user-specific settings.
+- Store user-specific plugin settings in `~/.config/cbar/env`.
 - Prefix cbar-specific settings with `CBAR_`.
 - Provide useful defaults for optional settings.
+- Add an `Edit cbar env` menu item to plugins that declare `# env:` variables so users can open the central env file from the popup.
+- Prefer `cosmic-edit` for the edit action and fall back to `xdg-open` when needed.
 - Never echo secret values into popup output.
 
 ## Actions
