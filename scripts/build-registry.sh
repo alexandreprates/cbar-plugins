@@ -31,6 +31,18 @@ add_plugin "system.disk" "Disk" "system" "Shows filesystem usage as compact segm
 add_plugin "system.service-status" "Service Status" "system" "Shows systemd service health with compact status and actions." "1.1.0" "plugins/system/service-status.30s.sh" "30s" "bash" "en" "awk,base64,journalctl,systemctl,tr" "CBAR_SERVICE_UNITS" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
 add_plugin "system.updates-available" "Updates Available" "system" "Shows available APT and Flatpak updates with a compact badge." "1.1.0" "plugins/system/updates-available.30m.sh" "30m" "bash" "en" "apt,awk,base64,cosmic-store,flatpak,tr" "CBAR_UPDATES_INCLUDE_APT,CBAR_UPDATES_INCLUDE_FLATPAK" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
 
+# news
+add_plugin "news.news-ticker" "News Ticker" "news" "Shows recent RSS news headlines from configurable feeds." "1.0.0" "plugins/news/news-ticker.15m.sh" "15m" "bash" "en,pt-BR" "base64,python3,tr" "CBAR_NEWS_FEEDS,CBAR_NEWS_LIMIT,CBAR_NEWS_TIMEOUT" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
+
+# finance
+add_plugin "finance.market-pulse" "Market Pulse" "finance" "Shows BRL exchange and asset quotes from configurable market pairs." "1.0.0" "plugins/finance/market-pulse.15m.sh" "15m" "bash" "en,pt-BR" "base64,python3,tr" "CBAR_MARKET_PAIRS,CBAR_MARKET_LIMIT,CBAR_MARKET_TIMEOUT" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
+
+# crypto
+add_plugin "crypto.crypto-watch" "Crypto Watch" "crypto" "Shows cryptocurrency prices and 24h movement for configurable coins." "1.0.0" "plugins/crypto/crypto-watch.10m.sh" "10m" "bash" "en" "base64,python3,tr" "CBAR_CRYPTO_IDS,CBAR_CRYPTO_VS,CBAR_CRYPTO_LIMIT,CBAR_CRYPTO_TIMEOUT" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
+
+# sports
+add_plugin "sports.sports-live" "Sports Live" "sports" "Shows live, upcoming, and recent scores for a configurable ESPN league." "1.0.0" "plugins/sports/sports-live.5m.sh" "5m" "bash" "en" "base64,python3,tr" "CBAR_SPORT_PATH,CBAR_SPORT_TEAM,CBAR_SPORT_LIMIT,CBAR_SPORT_TIMEOUT" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
+
 # network
 add_plugin "network.public-ip" "Public IP" "network" "Shows public and local IP status with copy actions." "1.1.0" "plugins/network/public-ip.5m.sh" "5m" "bash" "en" "awk,base64,curl,ip,tr,wl-copy,xclip" "CBAR_PUBLIC_IP_URL" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"
 add_plugin "network.network-throughput" "Network Throughput" "network" "Shows upload and download throughput as a compact panel chart." "1.1.0" "plugins/network/network-throughput.2s.sh" "2s" "bash" "en" "awk,base64,cat,date,ip,mkdir,tr" "CBAR_NETWORK_INTERFACE" "GPL-3.0-only" "AlexandrePrates" "https://github.com/AlexandrePrates"

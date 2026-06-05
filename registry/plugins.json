@@ -155,6 +155,130 @@
       "publisher_url": "https://github.com/AlexandrePrates"
     },
     {
+      "id": "news.news-ticker",
+      "name": "News Ticker",
+      "category": "news",
+      "description": "Shows recent RSS news headlines from configurable feeds.",
+      "plugin_version": "1.0.0",
+      "path": "plugins/news/news-ticker.15m.sh",
+      "download_url": "https://raw.githubusercontent.com/alexandreprates/cbar-plugins/main/plugins/news/news-ticker.15m.sh",
+      "install_name": "news-ticker.15m.sh",
+      "interval": "15m",
+      "language": "bash",
+      "languages": [
+        "en",
+        "pt-BR"
+      ],
+      "dependencies": [
+        "base64",
+        "python3",
+        "tr"
+      ],
+      "env": [
+        "CBAR_NEWS_FEEDS",
+        "CBAR_NEWS_LIMIT",
+        "CBAR_NEWS_TIMEOUT"
+      ],
+      "sha256": "6954a84ba7a7289e40bdbd99d157a969c28aa2f1b1ad452908ad4820eae2961f",
+      "size_bytes": 6715,
+      "license": "GPL-3.0-only",
+      "publisher": "AlexandrePrates",
+      "publisher_url": "https://github.com/AlexandrePrates"
+    },
+    {
+      "id": "finance.market-pulse",
+      "name": "Market Pulse",
+      "category": "finance",
+      "description": "Shows BRL exchange and asset quotes from configurable market pairs.",
+      "plugin_version": "1.0.0",
+      "path": "plugins/finance/market-pulse.15m.sh",
+      "download_url": "https://raw.githubusercontent.com/alexandreprates/cbar-plugins/main/plugins/finance/market-pulse.15m.sh",
+      "install_name": "market-pulse.15m.sh",
+      "interval": "15m",
+      "language": "bash",
+      "languages": [
+        "en",
+        "pt-BR"
+      ],
+      "dependencies": [
+        "base64",
+        "python3",
+        "tr"
+      ],
+      "env": [
+        "CBAR_MARKET_PAIRS",
+        "CBAR_MARKET_LIMIT",
+        "CBAR_MARKET_TIMEOUT"
+      ],
+      "sha256": "c3e3630f5b093e2cfb73963d532709c6e585a49a1e8fc335453e96bb4f2439cd",
+      "size_bytes": 6567,
+      "license": "GPL-3.0-only",
+      "publisher": "AlexandrePrates",
+      "publisher_url": "https://github.com/AlexandrePrates"
+    },
+    {
+      "id": "crypto.crypto-watch",
+      "name": "Crypto Watch",
+      "category": "crypto",
+      "description": "Shows cryptocurrency prices and 24h movement for configurable coins.",
+      "plugin_version": "1.0.0",
+      "path": "plugins/crypto/crypto-watch.10m.sh",
+      "download_url": "https://raw.githubusercontent.com/alexandreprates/cbar-plugins/main/plugins/crypto/crypto-watch.10m.sh",
+      "install_name": "crypto-watch.10m.sh",
+      "interval": "10m",
+      "language": "bash",
+      "languages": [
+        "en"
+      ],
+      "dependencies": [
+        "base64",
+        "python3",
+        "tr"
+      ],
+      "env": [
+        "CBAR_CRYPTO_IDS",
+        "CBAR_CRYPTO_VS",
+        "CBAR_CRYPTO_LIMIT",
+        "CBAR_CRYPTO_TIMEOUT"
+      ],
+      "sha256": "7888e5af414999392be7c5542fc500d8627a83a3ca706879b24af6665d86824f",
+      "size_bytes": 6456,
+      "license": "GPL-3.0-only",
+      "publisher": "AlexandrePrates",
+      "publisher_url": "https://github.com/AlexandrePrates"
+    },
+    {
+      "id": "sports.sports-live",
+      "name": "Sports Live",
+      "category": "sports",
+      "description": "Shows live, upcoming, and recent scores for a configurable ESPN league.",
+      "plugin_version": "1.0.0",
+      "path": "plugins/sports/sports-live.5m.sh",
+      "download_url": "https://raw.githubusercontent.com/alexandreprates/cbar-plugins/main/plugins/sports/sports-live.5m.sh",
+      "install_name": "sports-live.5m.sh",
+      "interval": "5m",
+      "language": "bash",
+      "languages": [
+        "en"
+      ],
+      "dependencies": [
+        "base64",
+        "python3",
+        "tr"
+      ],
+      "env": [
+        "CBAR_SPORT_PATH",
+        "CBAR_SPORT_TEAM",
+        "CBAR_SPORT_LIMIT",
+        "CBAR_SPORT_TIMEOUT"
+      ],
+      "sha256": "2812e407467c01f8794c9a02584aeb3427391c7423f3d5d4839a65cc3b52d2b2",
+      "size_bytes": 8365,
+      "license": "GPL-3.0-only",
+      "publisher": "AlexandrePrates",
+      "publisher_url": "https://github.com/AlexandrePrates"
+    },
+    {
       "id": "network.public-ip",
       "name": "Public IP",
       "category": "network",

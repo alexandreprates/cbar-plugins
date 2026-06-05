@@ -13,6 +13,10 @@ The machine-readable catalog is published at [registry/plugins.json](registry/pl
 ```text
 plugins/
   system/        local machine status and maintenance helpers
+  news/          headlines and public information feeds
+  finance/       exchange rates and market indicators
+  crypto/        cryptocurrency prices and movement
+  sports/        live scores and upcoming games
   network/       connectivity and network diagnostics
   dev/           developer workflow helpers
   productivity/  lightweight desktop utilities
@@ -28,6 +32,22 @@ System:
 - `plugins/system/disk.30s.sh` shows filesystem usage as segmented blocks.
 - `plugins/system/service-status.30s.sh` shows systemd service health.
 - `plugins/system/updates-available.30m.sh` shows APT and Flatpak updates with a badge.
+
+News:
+
+- `plugins/news/news-ticker.15m.sh` shows recent RSS news headlines from configurable feeds.
+
+Finance:
+
+- `plugins/finance/market-pulse.15m.sh` shows BRL exchange and asset quotes from configurable market pairs.
+
+Crypto:
+
+- `plugins/crypto/crypto-watch.10m.sh` shows cryptocurrency prices and 24h movement for configurable coins.
+
+Sports:
+
+- `plugins/sports/sports-live.5m.sh` shows live, upcoming, and recent scores for a configurable ESPN league.
 
 Network:
 
@@ -75,6 +95,10 @@ Use simple `KEY=value` assignments, such as:
 CBAR_PING_HOST="1.1.1.1"
 CBAR_SSH_HOSTS="server,user@host"
 CBAR_NETWORK_INTERFACE="wlan0"
+CBAR_NEWS_FEEDS="Top=https://g1.globo.com/rss/g1/;Economy=https://g1.globo.com/rss/g1/economia/"
+CBAR_MARKET_PAIRS="USD-BRL,EUR-BRL,BTC-BRL,XAU-BRL"
+CBAR_CRYPTO_IDS="bitcoin,ethereum,solana,cardano"
+CBAR_SPORT_PATH="soccer/bra.1"
 ```
 
 Catalog plugins that declare `# env:` variables include an `Edit cbar env` popup action. The action creates the file when needed and opens it with COSMIC's editor, falling back to the desktop opener when `cosmic-edit` is unavailable.

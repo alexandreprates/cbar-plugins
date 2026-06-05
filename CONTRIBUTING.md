@@ -6,7 +6,7 @@ Plugins run locally as the current user. Reviewers will prioritize clarity, safe
 
 ## Contribution Flow
 
-1. Choose the closest category under `plugins/`: `system`, `network`, `dev`, or `productivity`.
+1. Choose the closest category under `plugins/`: `system`, `news`, `finance`, `crypto`, `sports`, `network`, `dev`, or `productivity`.
 2. Copy a template, copy a similar existing plugin, or start a new executable script with a filename interval such as `battery.30s.sh`, `calendar.5m.sh`, or `backup.1h.sh`.
 3. Keep the output compatible with cbar. See [docs/plugin-format.md](docs/plugin-format.md) for panel titles, popup rows, actions, separators, and parameters.
 4. Add or update the plugin header with the purpose, dependencies, and environment variables.
@@ -71,7 +71,7 @@ When adding or changing a plugin, update the matching `add_plugin` entry in `scr
 
 Metadata should include any non-standard dependencies and environment variables so cbar can show users what a plugin expects before installation.
 
-Add new entries under the matching category comment in `scripts/build-registry.sh`, such as `# system`, `# network`, `# dev`, or `# productivity`. Keep the field order used by `add_plugin`:
+Add new entries under the matching category comment in `scripts/build-registry.sh`, such as `# system`, `# news`, `# finance`, `# crypto`, `# sports`, `# network`, `# dev`, or `# productivity`. Keep the field order used by `add_plugin`:
 
 ```text
 id, name, category, description, plugin_version, path, interval, language, languages, dependencies, env, license, publisher, publisher_url
