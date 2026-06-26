@@ -93,6 +93,43 @@
       "publisher_url": "https://github.com/AlexandrePrates"
     },
     {
+      "id": "system.os-health",
+      "name": "OS Health",
+      "category": "system",
+      "description": "Shows CPU usage, available memory, and available disk as three compact health bars.",
+      "plugin_version": "1.0.0",
+      "path": "plugins/system/os_health.30s.sh",
+      "download_url": "https://raw.githubusercontent.com/alexandreprates/cbar-plugins/main/plugins/system/os_health.30s.sh",
+      "install_name": "os_health.30s.sh",
+      "interval": "30s",
+      "language": "bash",
+      "languages": [
+        "en"
+      ],
+      "dependencies": [
+        "awk",
+        "base64",
+        "df",
+        "python3",
+        "sleep",
+        "tr"
+      ],
+      "env": [
+        "CBAR_OS_HEALTH_DISK_PATH",
+        "CBAR_OS_HEALTH_CPU_WARN",
+        "CBAR_OS_HEALTH_CPU_CRIT",
+        "CBAR_OS_HEALTH_MEMORY_WARN",
+        "CBAR_OS_HEALTH_MEMORY_CRIT",
+        "CBAR_OS_HEALTH_DISK_WARN",
+        "CBAR_OS_HEALTH_DISK_CRIT"
+      ],
+      "sha256": "233c3354fb37ebe7b50381b3244b2c61394a5c7ddfcb9b77f42ec0e0a6cb1aed",
+      "size_bytes": 7273,
+      "license": "GPL-3.0-only",
+      "publisher": "AlexandrePrates",
+      "publisher_url": "https://github.com/AlexandrePrates"
+    },
+    {
       "id": "system.service-status",
       "name": "Service Status",
       "category": "system",

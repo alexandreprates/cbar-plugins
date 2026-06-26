@@ -30,6 +30,7 @@ System:
 - `plugins/system/cpu-chart.5s.sh` shows CPU usage history as a mini chart.
 - `plugins/system/memory-gauge.5s.sh` shows RAM usage as a compact gauge.
 - `plugins/system/disk.30s.sh` shows filesystem usage as segmented blocks.
+- `plugins/system/os_health.30s.sh` shows CPU usage, available memory, and available disk as three health bars.
 - `plugins/system/service-status.30s.sh` shows systemd service health.
 - `plugins/system/updates-available.30m.sh` shows APT and Flatpak updates with a badge.
 
