@@ -96,8 +96,8 @@
       "id": "system.os-health",
       "name": "OS Health",
       "category": "system",
-      "description": "Shows CPU usage, available memory, and available disk as three compact health bars.",
-      "plugin_version": "1.0.0",
+      "description": "Shows CPU, memory, and disk usage as three compact health bars.",
+      "plugin_version": "1.0.1",
       "path": "plugins/system/os_health.30s.sh",
       "download_url": "https://raw.githubusercontent.com/alexandreprates/cbar-plugins/main/plugins/system/os_health.30s.sh",
       "install_name": "os_health.30s.sh",
@@ -123,8 +123,8 @@
         "CBAR_OS_HEALTH_DISK_WARN",
         "CBAR_OS_HEALTH_DISK_CRIT"
       ],
-      "sha256": "233c3354fb37ebe7b50381b3244b2c61394a5c7ddfcb9b77f42ec0e0a6cb1aed",
-      "size_bytes": 7273,
+      "sha256": "97b77305cfadcdbcfffa81adcfb733175ed2eeb51c777c7bb0ea256100204e0d",
+      "size_bytes": 7413,
       "license": "GPL-3.0-only",
       "publisher": "AlexandrePrates",
       "publisher_url": "https://github.com/AlexandrePrates"

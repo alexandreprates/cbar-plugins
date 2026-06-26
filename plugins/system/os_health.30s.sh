@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# cbar: Shows CPU, available memory, and available disk as compact health bars.
+# cbar: Shows CPU, memory, and disk usage as compact health bars.
 # deps: awk, base64, df, python3, sleep, tr
 # env: CBAR_OS_HEALTH_DISK_PATH, CBAR_OS_HEALTH_CPU_WARN, CBAR_OS_HEALTH_CPU_CRIT, CBAR_OS_HEALTH_MEMORY_WARN, CBAR_OS_HEALTH_MEMORY_CRIT, CBAR_OS_HEALTH_DISK_WARN, CBAR_OS_HEALTH_DISK_CRIT
 
@@ -80,6 +80,8 @@ if (( mem_total > 0 )); then
 fi
 memory_available_percent="$(clamp_percent "$memory_available_percent")"
 memory_used=$(( mem_total - mem_available ))
+memory_used_percent=$(( 100 - memory_available_percent ))
+memory_used_percent="$(clamp_percent "$memory_used_percent")"
 
 disk_path="${CBAR_OS_HEALTH_DISK_PATH:-/}"
 read -r disk_size disk_used disk_available disk_percent disk_mount < <(
@@ -101,10 +103,10 @@ disk_available_percent="$(clamp_percent "$disk_available_percent")"
 
 cpu_warn="$(threshold "${CBAR_OS_HEALTH_CPU_WARN:-75}" 75)"
 cpu_crit="$(threshold "${CBAR_OS_HEALTH_CPU_CRIT:-90}" 90)"
-memory_warn="$(threshold "${CBAR_OS_HEALTH_MEMORY_WARN:-25}" 25)"
-memory_crit="$(threshold "${CBAR_OS_HEALTH_MEMORY_CRIT:-10}" 10)"
-disk_warn="$(threshold "${CBAR_OS_HEALTH_DISK_WARN:-20}" 20)"
-disk_crit="$(threshold "${CBAR_OS_HEALTH_DISK_CRIT:-10}" 10)"
+memory_warn="$(threshold "${CBAR_OS_HEALTH_MEMORY_WARN:-75}" 75)"
+memory_crit="$(threshold "${CBAR_OS_HEALTH_MEMORY_CRIT:-90}" 90)"
+disk_warn="$(threshold "${CBAR_OS_HEALTH_DISK_WARN:-80}" 80)"
+disk_crit="$(threshold "${CBAR_OS_HEALTH_DISK_CRIT:-90}" 90)"
 
 if (( cpu_warn >= cpu_crit )); then
   cpu_warn=$(( cpu_crit - 10 ))
@@ -113,18 +115,18 @@ if (( cpu_warn < 0 )); then
   cpu_warn=0
 fi
 
-if (( memory_warn <= memory_crit )); then
-  memory_warn=$(( memory_crit + 10 ))
+if (( memory_warn >= memory_crit )); then
+  memory_warn=$(( memory_crit - 10 ))
 fi
-if (( memory_warn > 100 )); then
-  memory_warn=100
+if (( memory_warn < 0 )); then
+  memory_warn=0
 fi
 
-if (( disk_warn <= disk_crit )); then
-  disk_warn=$(( disk_crit + 10 ))
+if (( disk_warn >= disk_crit )); then
+  disk_warn=$(( disk_crit - 10 ))
 fi
-if (( disk_warn > 100 )); then
-  disk_warn=100
+if (( disk_warn < 0 )); then
+  disk_warn=0
 fi
 
 make_health_svg() {
@@ -154,10 +156,10 @@ def cpu_fill(pct):
         return '#f59e0b'
     return '#ffffff'
 
-def available_fill(pct, warn, crit):
-    if pct <= crit:
+def usage_fill(pct, warn, crit):
+    if pct >= crit:
         return '#f85149'
-    if pct <= warn:
+    if pct >= warn:
         return '#f59e0b'
     return '#ffffff'
 
@@ -176,8 +178,8 @@ def row(y, pct, color):
 
 svg = f'''<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"40\" height=\"24\" viewBox=\"0 0 40 24\">
 {row(2, cpu, cpu_fill(cpu))}
-{row(10, memory, available_fill(memory, memory_warn, memory_crit))}
-{row(18, disk, available_fill(disk, disk_warn, disk_crit))}
+{row(10, memory, usage_fill(memory, memory_warn, memory_crit))}
+{row(18, disk, usage_fill(disk, disk_warn, disk_crit))}
 </svg>'''
 
 print(base64.b64encode(svg.encode('utf-8')).decode())
@@ -185,16 +187,16 @@ print(base64.b64encode(svg.encode('utf-8')).decode())
 }
 
 title_color() {
-  if (( cpu_usage >= cpu_crit || memory_available_percent <= memory_crit || disk_available_percent <= disk_crit )); then
+  if (( cpu_usage >= cpu_crit || memory_used_percent >= memory_crit || disk_used_percent >= disk_crit )); then
     echo "#CC0000"
-  elif (( cpu_usage >= cpu_warn || memory_available_percent <= memory_warn || disk_available_percent <= disk_warn )); then
+  elif (( cpu_usage >= cpu_warn || memory_used_percent >= memory_warn || disk_used_percent >= disk_warn )); then
     echo "#CC8800"
   else
     echo ""
   fi
 }
 
-health_image="$(make_health_svg "$cpu_usage" "$memory_available_percent" "$disk_available_percent" "$cpu_warn" "$cpu_crit" "$memory_warn" "$memory_crit" "$disk_warn" "$disk_crit")"
+health_image="$(make_health_svg "$cpu_usage" "$memory_used_percent" "$disk_used_percent" "$cpu_warn" "$cpu_crit" "$memory_warn" "$memory_crit" "$disk_warn" "$disk_crit")"
 panel_color="$(title_color)"
 
 if [[ -n "$panel_color" ]]; then
@@ -209,21 +211,23 @@ echo "--Warning: ${cpu_warn}% | disabled=true"
 echo "--Critical: ${cpu_crit}% | disabled=true"
 echo "Open CPU details | shell=/bin/sh param1=-lc param2='top -b -n 1 | head -20; printf \"\\n\"; read -r -p \"Press enter to close...\"' terminal=true"
 echo "---"
-echo "Memory: ${memory_available_percent}% available"
+echo "Memory: ${memory_used_percent}% used"
 echo "--Available: $(format_kib_gib "$mem_available") | disabled=true"
 echo "--Used: $(format_kib_gib "$memory_used") | disabled=true"
 echo "--Total: $(format_kib_gib "$mem_total") | disabled=true"
-echo "--Warning below: ${memory_warn}% | disabled=true"
-echo "--Critical below: ${memory_crit}% | disabled=true"
+echo "--Available: ${memory_available_percent}% | disabled=true"
+echo "--Warning: ${memory_warn}% | disabled=true"
+echo "--Critical: ${memory_crit}% | disabled=true"
 echo "Open memory details | shell=/bin/sh param1=-lc param2='free -h; printf \"\\n\"; read -r -p \"Press enter to close...\"' terminal=true"
 echo "---"
-echo "Disk: ${disk_available_percent}% available"
+echo "Disk: ${disk_used_percent}% used"
 echo "--Available: $(format_kib_gib "$disk_available") | disabled=true"
 echo "--Used: $(format_kib_gib "$disk_used") | disabled=true"
 echo "--Size: $(format_kib_gib "$disk_size") | disabled=true"
 echo "--Mount: ${disk_mount} | disabled=true"
-echo "--Warning below: ${disk_warn}% | disabled=true"
-echo "--Critical below: ${disk_crit}% | disabled=true"
+echo "--Available: ${disk_available_percent}% | disabled=true"
+echo "--Warning: ${disk_warn}% | disabled=true"
+echo "--Critical: ${disk_crit}% | disabled=true"
 echo "Open disk usage | bash=/bin/bash param1=-lc param2='xdg-open \"${disk_mount}\"'"
 echo "---"
 echo "Refresh | refresh=true"
